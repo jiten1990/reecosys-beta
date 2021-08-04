@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+.app-container{
+    max-width: 640px;
+    margin: 0 auto;
+}
+p{
+    overflow: hidden;
+}
+.lazyImage{
+    filter: blur(5px);
+    width: 100%;
+    min-height: 200px;
+    transition: filter ease-in 0.8s;
+    transition: filter ease-in 0.8s;
+    transition: filter ease-in 0.8s;
+    transition: filter ease-in 0.8s;
+    transition: filter ease-in 0.8s;
+}
+.ng-lazyloaded{
+    filter: blur(0);
+    -moz-transform: unset;
+    -webkit-transform: unset;
+    -ms-transform: unset;
+    -o-transform: unset;
+}

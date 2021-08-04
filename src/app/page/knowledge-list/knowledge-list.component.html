@@ -1,0 +1,14 @@
+<div class="app-container">
+    <ng-container>
+        <div *ngFor="let knowledge of knowledgeListing">
+            <h2>
+                <a routerLink="knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a>
+            </h2>
+            <p>{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.profile.name}} - {{knowledge.relative_time}}</p>
+            <p *ngIf="knowledge.media[0].media_url != ''">
+                <img [defaultImage]="knowledge.media[0].media_url_thumb" [lazyLoad]="knowledge.media[0].media_url" class="lazyImage" />
+            </p>
+            <hr />
+        </div>
+    </ng-container>
+</div>
