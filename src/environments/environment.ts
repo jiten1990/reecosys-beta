@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://reecosys.com/beta/api/',
+  apiUrl: 'https://reecosys.com/beta/api/',
 };
 
 /*
