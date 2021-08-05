@@ -7,14 +7,14 @@ p{
     overflow: hidden;
 }
 .lazyImage{
-    filter: blur(5px);
+    /* filter: blur(5px); */
     width: 100%;
     min-height: 200px;
+    /* transition: filter ease-in 0.8s;
     transition: filter ease-in 0.8s;
     transition: filter ease-in 0.8s;
     transition: filter ease-in 0.8s;
-    transition: filter ease-in 0.8s;
-    transition: filter ease-in 0.8s;
+    transition: filter ease-in 0.8s; */
 }
 .ng-lazyloaded{
     filter: blur(0);
