@@ -20,9 +20,8 @@ export class KnowledgeDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
-
     this.route.paramMap.subscribe(params => {
+      this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
       if(!this.knowledge){
         this.loadKnowledgeDetails();
       }
@@ -39,7 +38,7 @@ export class KnowledgeDetailComponent implements OnInit {
     this.knowlegeService.knowledgedetails(this.route.snapshot.params['post_id']).subscribe((response: any) => {
         if (response.success == 1) {
           this.knowledge = response.post;
-          this.state.set(knowledgeDetailsKey, response.posts as any);
+          this.state.set(knowledgeDetailsKey, response.post as any);
         }
         else {
         }
