@@ -2,6 +2,7 @@
     <ng-container>
         <div *ngFor="let knowledge of knowledgeListing">
             <h2>
+                <!-- <a routerLink="knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a> -->
                 <a onclick="urlSend(this)" [attr.data-url]="'knowledge/'+knowledge.post_id" href="javascript:void(0)">{{knowledge.title}}</a>
             </h2>
             <p>{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.profile.name}} - {{knowledge.relative_time}}</p>
