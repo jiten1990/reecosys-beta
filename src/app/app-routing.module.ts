@@ -8,15 +8,16 @@ const routes: Routes = [
   { 
       path: '',
       children: [
-        { path: '', component: KnowledgeListComponent},
-        { path: 'knowledge/:post_id', component: KnowledgeDetailComponent},
-      ]
+        { path: '', component: KnowledgeListComponent, data: { title : "main" }},
+        { path: 'knowledge/:post_id', component: KnowledgeDetailComponent, data: { title : "back" }},
+      ],
+      data: { title : "main" }
   },
   {
       path: 'app',
       children: [
-        { path: '', component: KnowledgeListComponent},
-        { path: 'knowledge/:post_id', component: KnowledgeDetailComponent},
+        { path: '', component: KnowledgeListComponent, data: { title : "main" }},
+        { path: 'knowledge/:post_id', component: KnowledgeDetailComponent, data: { title : "back" }},
       ]
 
   }
