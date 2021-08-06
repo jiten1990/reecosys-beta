@@ -33,4 +33,19 @@ export class KnowledgeListComponent implements OnInit {
     });
   }
 
+  urlSend(url) {
+
+    var javascript_object : any;
+
+    var json = {
+      url : url
+    };
+
+    console.log(JSON.stringify(json), "JSON");
+
+    javascript_object.getURL(json);
+    
+
+}
+
 }
