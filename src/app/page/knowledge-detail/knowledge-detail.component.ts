@@ -39,6 +39,7 @@ export class KnowledgeDetailComponent implements OnInit {
         if (response.success == 1) {
           this.knowledge = response.post;
           this.state.set(knowledgeDetailsKey, response.post as any);
+          this.state.set(knowledgeDetailsKey, null as any);
         }
         else {
         }

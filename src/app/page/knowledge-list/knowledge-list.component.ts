@@ -19,9 +19,13 @@ export class KnowledgeListComponent implements OnInit {
     private state: TransferState
   ) { }
 
-  ngOnInit() {
+  public isApp = false;
 
-    console.log(this.router.getCurrentNavigation()); // array of states
+  ngOnInit() {
+    
+    if(this.router.url.indexOf("app") > -1){
+      this.isApp = true;
+    }
 
     this.knowledgeListing = this.state.get(knowledgeKey, null as any);
     if(!this.knowledgeListing){
