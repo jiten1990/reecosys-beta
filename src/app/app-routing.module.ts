@@ -5,8 +5,21 @@ import { KnowledgeListComponent } from './page/knowledge-list/knowledge-list.com
 
 
 const routes: Routes = [
-  { path: '', component: KnowledgeListComponent},
-  { path: 'knowledge/:post_id', component: KnowledgeDetailComponent},
+  { 
+      path: '',
+      children: [
+        { path: '', component: KnowledgeListComponent},
+        { path: 'knowledge/:post_id', component: KnowledgeDetailComponent},
+      ]
+  },
+  {
+      path: 'app',
+      children: [
+        { path: '', component: KnowledgeListComponent},
+        { path: 'knowledge/:post_id', component: KnowledgeDetailComponent},
+      ]
+
+  }
 ];
 
 @NgModule({

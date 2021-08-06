@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 
 const knowledgeKey = makeStateKey('knowledgeListing');
 
@@ -12,11 +13,16 @@ const knowledgeKey = makeStateKey('knowledgeListing');
 export class KnowledgeListComponent implements OnInit {
 
   constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private knowlegeService: KnowledgeService,
     private state: TransferState
   ) { }
 
   ngOnInit() {
+
+    console.log(this.router.getCurrentNavigation()); // array of states
+
     this.knowledgeListing = this.state.get(knowledgeKey, null as any);
     if(!this.knowledgeListing){
       this.getKnowledges();

@@ -1,6 +1,6 @@
 <div class="app-container">
-    <ng-container *ngIf="knowledge.title != ''">
-        <div>
+    <ng-container *ngIf="knowledge && knowledge.title != ''">
+        <div style="margin-top: 15px; padding: 0 15px;">
             <h2>{{knowledge.title}}</h2>
             <p>{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.profile.name}} - {{knowledge.relative_time}}</p>
             <hr />
