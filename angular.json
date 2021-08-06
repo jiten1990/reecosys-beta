@@ -59,7 +59,7 @@
                 }
               ],
               "serviceWorker": false,
-              "ngswConfigPath": ""
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
