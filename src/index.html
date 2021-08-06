@@ -8,9 +8,6 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
   <app-root></app-root>
@@ -20,19 +17,15 @@
 <script type="text/javascript">
   function urlSend(value){
       let chromeAgent = (navigator.userAgent.indexOf("Chrome")>-1);
-
-      // console.log(chromeAgent, "is chrome agent");
-
-      // if(chromeAgent){
-      var url = "https://reecosys.herokuapp.com/"+value.getAttribute("data-url");
-      //var url = "http://192.168.50.66:4000/"+value.getAttribute("data-url");
-      var json = JSON.stringify(url);
-      javascript_object.getURL(json);
-      // }
-      // else{
-      //   var url = "http://192.168.50.66:4000/"+value.getAttribute("data-url");
-      //   var data = JSON.stringify(url);
-      //   window.webkit.messageHandlers.getURL.postMessage(data);
-      // }
+      if(chromeAgent){
+         var url = "https://reecosys.herokuapp.com/"+value.getAttribute("data-url");
+         var json = JSON.stringify(url);
+         javascript_object.getURL(json);
+      }
+      else{
+        var url = "https://reecosys.herokuapp.com/"+value.getAttribute("data-url");
+        var data = JSON.stringify(url);
+        window.webkit.messageHandlers.getURL.postMessage(data);
+      }
   }
 </script>
