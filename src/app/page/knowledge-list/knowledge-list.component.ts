@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
+import { TransferState, makeStateKey } from '@angular/platform-browser';
+
+const knowledgeKey = makeStateKey('knowledgeListing');
 
 @Component({
   selector: 'app-knowledge-list',
@@ -10,10 +13,14 @@ export class KnowledgeListComponent implements OnInit {
 
   constructor(
     private knowlegeService: KnowledgeService,
+    private state: TransferState
   ) { }
 
   ngOnInit() {
-    this.getKnowledges();
+    this.knowledgeListing = this.state.get(knowledgeKey, null as any);
+    if(!this.knowledgeListing){
+      this.getKnowledges();
+    }
   }
 
   public isLoading : boolean = false;
@@ -25,27 +32,13 @@ export class KnowledgeListComponent implements OnInit {
     this.isLoading = true;
     this.knowlegeService.knowledgeListing().subscribe((response: any) => {
         if (response.success == 1) {
-          this.knowledgeListing = response.posts;
+            this.knowledgeListing = response.posts;
+            this.state.set(knowledgeKey, response.posts as any);
         }
         else {
         }
         this.isLoading = false;
     });
   }
-
-  urlSend(url) {
-
-    var javascript_object : any;
-
-    var json = {
-      url : url
-    };
-
-    console.log(JSON.stringify(json), "JSON");
-
-    javascript_object.getURL(json);
-    
-
-}
 
 }

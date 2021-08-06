@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
+import { TransferState, makeStateKey } from '@angular/platform-browser';
+
+const knowledgeDetailsKey = makeStateKey('knowledge');
 
 @Component({
   selector: 'app-knowledge-detail',
@@ -11,12 +14,18 @@ export class KnowledgeDetailComponent implements OnInit {
 
   constructor(
     private knowlegeService: KnowledgeService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private state: TransferState
   ) { }
 
   ngOnInit() {
+
+    this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
+
     this.route.paramMap.subscribe(params => {
-      this.loadKnowledgeDetails();
+      if(!this.knowledge){
+        this.loadKnowledgeDetails();
+      }
     })
   } 
 
@@ -30,6 +39,7 @@ export class KnowledgeDetailComponent implements OnInit {
     this.knowlegeService.knowledgedetails(this.route.snapshot.params['post_id']).subscribe((response: any) => {
         if (response.success == 1) {
           this.knowledge = response.post;
+          this.state.set(knowledgeDetailsKey, response.posts as any);
         }
         else {
         }
