@@ -3,8 +3,8 @@
     <ng-container ng-if="knowledgeListing.length > 0">
         <div *ngFor="let knowledge of knowledgeListing">
             <h2>
-                <!-- <a onclick="urlSend(this)" [attr.data-url]="'knowledge/'+knowledge.post_id" href="javascript:void(0)">{{knowledge.title}}</a> -->
-                <a href="knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a>
+                <a onclick="urlSend(this)" [attr.data-url]="'knowledge/'+knowledge.post_id" href="javascript:void(0)">{{knowledge.title}}</a>
+                <!-- <a href="knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a> -->
             </h2>
             <p>{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.profile.name}} - {{knowledge.relative_time}}</p>
             <p *ngIf="knowledge.media[0].media_url != ''">
