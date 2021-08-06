@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { KnowledgeListComponent } from './page/knowledge-list/knowledge-list.component';
 import { HttpClientModule } from "@angular/common/http";
@@ -21,7 +21,7 @@ import { LazyLoadImageModule, LAZYLOAD_IMAGE_HOOKS, ScrollHooks } from 'ng-lazyl
     AppRoutingModule,
     HttpClientModule,
     LazyLoadImageModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    //ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   bootstrap: [AppComponent]
