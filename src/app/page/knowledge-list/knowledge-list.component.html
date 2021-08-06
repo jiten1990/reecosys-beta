@@ -1,5 +1,5 @@
 <div class="app-container">
-    <ng-container>
+    <ng-container ng-if="knowledgeListing.length > 0">
         <div *ngFor="let knowledge of knowledgeListing">
             <h2>
                 <a onclick="urlSend(this)" [attr.data-url]="'knowledge/'+knowledge.post_id" href="javascript:void(0)">{{knowledge.title}}</a>
