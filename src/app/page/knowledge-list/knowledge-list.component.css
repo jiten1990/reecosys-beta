@@ -1,0 +1,30 @@
+.BottomToolbarNav{  
+    position: fixed;
+    bottom: 0; 
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+}
+.BottomToolbarNav span{
+    display: inline-block;
+    width: calc(100% / 5);
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: bottom;
+    border-top: solid 2px transparent;
+    padding: 8px 0;
+}
+.BottomToolbarNav span.active{
+    border-color: #FF3008;
+}
+.BottomToolbarNav span a, .BottomToolbarNav span label{
+    width: 100%;
+    font-size: 11px;
+    display: block;
+    line-height: 1;
+    color: #7C7C7C;
+}
+.BottomToolbarNav span img{
+    width: 24px;
+}

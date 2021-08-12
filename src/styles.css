@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body, html{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
 .app-container{
     max-width: 640px;
     margin: 0 auto;
@@ -40,4 +49,68 @@ p{
 }
 p.small{
     font-size:14px;
+}
+.plyr__control--overlaid{
+    background-color: red!important;
+}
+.plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded=true]{
+    background-color: red!important;
+}
+.plyr--full-ui input[type=range]{
+    color: red!important
+}
+.bottom-bar-padding{
+    padding-bottom: 56px;
+}
+.gray{
+    color: #7C7C7C;
+}
+.mat-icon{
+    vertical-align: middle;
+}
+.otherLinks{
+    padding: 25px 0;
+}
+.otherLinks p{
+    padding: 0px 16px;
+    font-size: 14px;
+    line-height: 32px;
+}
+
+.font-12{
+    font-size: 12px;
+    line-height: 1.2;
+}
+.font-16{
+    font-size: 16px;
+    line-height: 1.2;
+}
+.font-18{
+    font-size: 18px;
+    line-height: 1.2;
+}
+.font-22{
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+.mat-toolbar{
+    background-color: #fff!important;
+}
+.mat-drawer-container{
+    background: #fff!important;
+    max-height: 100vh;
+    overflow-x: hidden!important;
+    overflow-y: auto!important;
+}
+.mat-drawer-container-has-open{
+    overflow-x: hidden!important;
+    overflow-y: hidden!important;
+}
+.mainLogoWrap i{
+    color: #000;
+    font-weight: bold;
+}
+.mainToolBar .NavButtonMain{
+    margin-left: -15px;
 }

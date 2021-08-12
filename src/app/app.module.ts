@@ -42,13 +42,19 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
+import { PlyrModule } from 'ngx-plyr';
+// import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
+import { SafePipe } from './safe.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     KnowledgeListComponent,
-    KnowledgeDetailComponent
+    KnowledgeDetailComponent,
+    // NgxResponsiveEmbedComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -92,6 +98,8 @@ import {MatTreeModule} from '@angular/material/tree';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
+    Angular2UsefulSwiperModule,
+    PlyrModule
   ],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   bootstrap: [AppComponent]

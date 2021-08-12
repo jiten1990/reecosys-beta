@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://reecosys.com/beta/api/',
+  apiUrl: 'http://192.168.50.66/reecosys/beta/api/',
 };
 
 /*

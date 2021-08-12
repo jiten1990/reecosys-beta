@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SwiperOptions } from 'swiper';
+// import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
 
 const knowledgeKey = makeStateKey('knowledgeListing');
 
@@ -31,6 +33,24 @@ export class KnowledgeListComponent implements OnInit {
     if(!this.knowledgeListing){
       this.getKnowledges();
     }
+
+  }
+
+  public config: SwiperOptions = {
+    pagination: { el: '.swiper-pagination', clickable: true },
+    slidesPerView: 1,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    spaceBetween: 30
+  };
+
+  public playerOptions = {
+    hideControls: true,
+    disableContextMenu : true,
+    autoplay : false,
+    muted: true,
   }
 
   public isLoading : boolean = false;

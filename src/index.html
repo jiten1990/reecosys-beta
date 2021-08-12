@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>SsrDemo</title>
+  <title>Reecosys</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBOHLpLSo7Tbdjq_rJzZhBjyGTron6Xurk"></script>
 </head>
 <body>
   <app-root></app-root>
@@ -31,3 +34,23 @@
       }
   }
 </script>
+
+<script type="text/javascript"> 
+  // var geocoder;
+
+  // if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(function(position) {
+  //       var lat = position.coords.latitude;
+  //       var lng = position.coords.longitude;
+  //       geocoder = new google.maps.Geocoder();
+  //       var latlng = new google.maps.LatLng(lat, lng);
+  //       geocoder.geocode({'latLng': latlng}, function(results, status) {
+  //         if (status == google.maps.GeocoderStatus.OK) {
+  //           console.log(results[0].address_components[0].long_name, "results");
+  //         } 
+  //       });
+  //     }
+  //     );
+  // } 
+
+</script> 

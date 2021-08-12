@@ -18,10 +18,13 @@ export class KnowledgeDetailComponent implements OnInit {
     private state: TransferState
   ) { }
 
+
+  
   ngOnInit() {
 
+    this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
     this.route.paramMap.subscribe(params => {
-      this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
+      // this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
       if(!this.knowledge){
         this.loadKnowledgeDetails();
       }
