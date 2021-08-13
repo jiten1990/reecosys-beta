@@ -22,7 +22,12 @@ export class KnowledgeDetailComponent implements OnInit {
   
   ngOnInit() {
 
-    this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
+
+    if(this.knowledge.post_id != this.route.snapshot.params['post_id']){
+        this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
+    }
+
+    // console.log(this.knowledge, "know");
     this.route.paramMap.subscribe(params => {
       // this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
       if(!this.knowledge){
@@ -42,7 +47,7 @@ export class KnowledgeDetailComponent implements OnInit {
         if (response.success == 1) {
           this.knowledge = response.post;
           this.state.set(knowledgeDetailsKey, response.post as any);
-          this.state.set(knowledgeDetailsKey, null as any);
+          // this.state.set(knowledgeDetailsKey, null as any);
         }
         else {
         }
