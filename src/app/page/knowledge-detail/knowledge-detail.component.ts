@@ -39,11 +39,16 @@ export class KnowledgeDetailComponent implements OnInit {
     muted: true,
   }
 
+  public isReadMore : boolean = false;
+
   ngOnInit() {
+
+    this.isReadMore = false;
 
     if(this.router.url.indexOf("app") > -1){
       this.isApp = true;
     }
+
 
     this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
     this.route.paramMap.subscribe(params => {
@@ -53,6 +58,13 @@ export class KnowledgeDetailComponent implements OnInit {
       }
     })
   } 
+
+  readMoreContent(){
+      this.isReadMore = true;
+  }
+  readLessContent(){
+     this.isReadMore = false;
+  }
 
   public isLoading = false;
 

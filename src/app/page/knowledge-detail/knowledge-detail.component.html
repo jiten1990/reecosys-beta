@@ -56,14 +56,70 @@
                 </ng-container>
             </div>
 
-            <div *ngFor="let block of knowledge.blocks">
-                <ng-container *ngIf="block.block_type == 'image' && block.block_content != ''">
-                    <!-- <img [defaultImage]="block.block_content" [lazyLoad]="block.block_content" class="lazyImage" /> -->
-                    <img src="https:{{block.block_content}}" class="lazyImage" />
-                </ng-container>
-                <ng-container *ngIf="block.block_type == 'text'">
-                    <p [innerHtml]="block.block_content"></p>
-                </ng-container>
+
+            <div class="animated fadeIn" *ngIf="knowledge.blocks.length > 0">
+
+                <div class="contentWrapper">
+
+                    <div class="contentInnerWrap">
+                        <ng-container *ngFor="let block of knowledge.blocks; let i = index;">
+                            <div *ngIf="i < 2 || isReadMore">
+                                <ng-container *ngIf="block.block_type == 'image' && block.block_content != ''">
+                                    <!-- <img [defaultImage]="block.block_content" [lazyLoad]="block.block_content" class="lazyImage" /> -->
+                                    <img src="https:{{block.block_content}}" class="lazyImage" />
+                                </ng-container>
+                                <ng-container *ngIf="block.block_type == 'slider' && block.block_content != ''">
+                                    <!-- <img [defaultImage]="block.block_content" [lazyLoad]="block.block_content" class="lazyImage" /> -->
+                                    <img src="https:{{block.block_content}}" class="lazyImage" />
+                                </ng-container>
+                                <ng-container *ngIf="block.block_type == 'text'">
+                                    <p [innerHtml]="block.block_content"></p>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                        <div class="overlayShaddow" *ngIf="!isReadMore && knowledge.blocks.length > 2"></div>
+                    </div>
+                    <div class="readMoreBlock" *ngIf="!isReadMore && knowledge.blocks.length > 2">
+                        <!-- <button mat-flat-button (click)="readMoreContent()" color="primary">Read More</button> -->
+                        <div matRipple class="tabBox" (click)="readMoreContent()">
+                            <p style="margin: 0">Read More</p>
+                        </div>
+                    </div>
+                    <div class="readMoreBlock" *ngIf="isReadMore">
+                        <!-- <button mat-flat-button (click)="readMoreContent()" color="primary">Read More</button> -->
+                        <div matRipple class="tabBox" (click)="readLessContent()">
+                            <p style="margin: 0">Read Less</p>
+                        </div>
+                    </div>
+
+
+                    <div class="tagWrapper">
+                        <ng-container *ngFor="let tag of knowledge.tags">
+                            <ng-container *ngIf="tag.tag != ''">
+                                <div matRipple class="tabBox">
+                                    <h2>More on {{tag.tag}}</h2>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                        <ng-container *ngFor="let user of knowledge.users">
+                            <ng-container *ngIf="user.name != ''">
+                                <div matRipple class="tabBox">
+                                    <div class="flexBlock verticalcenter">
+                                        <div class="profilePic">
+                                            <img src="{{user.profile_picture}}" />
+                                        </div>
+                                        <div class="profileInfo">
+                                            <h2>{{user.name}}</h2>
+                                            <p class="small gray">{{user.designations[0].designation}} at {{knowledge.profile.designations[0].company_name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </ng-container>
