@@ -178,7 +178,7 @@ a, a:focus, a:hover {
 
 h2 {
     font-size: 18px;
-    line-height: 1.4;
+    line-height: 1.3;
     font-weight: normal;
     margin: 0;
 }
@@ -387,4 +387,34 @@ a {
     height: 24px;
     width: 24px;
     border-radius: 15px;
+}
+
+.flexBlock{
+    display: flex;
+}
+
+.flexBlock.verticalcenter{
+    align-items: center;
+    /* justify-content: center; */
+}
+.flexBlock .bookmarkIcon{
+    margin-right: -10px;
+}
+.dotSeparator{
+    background-color: #7C7C7C;
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    margin: 0 3px;
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateY(-1px);
+}
+
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary{
+    background-color: #CC202E;
+}
+
+.radiusButton{
+    border-radius: 25px!important;
 }

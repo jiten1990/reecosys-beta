@@ -57,7 +57,7 @@
 
                                 <ng-container *ngIf="knowledge.layout != 'right'">
 
-                                    <p style="margin-bottom: 15px;" class="small gray">{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.relative_time}}</p>
+                                    <p style="margin-bottom: 15px;" class="small gray">{{knowledge.location}} <span *ngIf="knowledge.location != ''"> <span class="dotSeparator"></span> </span> {{knowledge.relative_time}}</p>
 
                                     <div class="mediaImageWrap">
                                         <ng-container *ngIf="knowledge.post_type == 'youtube'">
