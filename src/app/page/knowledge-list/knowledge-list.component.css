@@ -13,10 +13,13 @@
     text-align: center;
     vertical-align: bottom;
     border-top: solid 2px transparent;
-    padding: 8px 0;
+    /* padding: 8px 0; */
 }
 .BottomToolbarNav span.active{
     border-color: #FF3008;
+}
+.BottomToolbarNav span a{
+    padding-bottom: 5px;
 }
 .BottomToolbarNav span a, .BottomToolbarNav span label{
     width: 100%;

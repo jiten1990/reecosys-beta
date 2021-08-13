@@ -26,6 +26,10 @@ export class AppComponent{
     
     router.events.subscribe(event => {
 
+      if(this.router.url.indexOf("app") > -1){
+        this.isApp = true;
+      }  
+
       //window.scrollTo(0, 0);
 
       // if(this.router.url == '/' || this.router.url == '/home'){

@@ -1,4 +1,4 @@
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="example-container animated fadeIn">
     <mat-drawer #drawer class="mat-sidenav-main" mode="over" >
         <mat-list>
             <mat-list-item matRipple> 
@@ -80,14 +80,16 @@
     
     <mat-toolbar class="mainToolBar" *ngIf="!noheader">
         <ng-container *ngIf="!isBack">
-            <button mat-icon-button class="NavButtonMain" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
+            <!-- <button mat-icon-button class="NavButtonMain" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
                 <mat-icon aria-hidden="true" aria-label="menu icon">menu</mat-icon>
-            </button>
+            </button> -->
+            <div matRipple [matRippleCentered]="true" class="iconMaster" (click)="drawer.toggle()"><img src="assets/icons/placeholder.jpg" /></div>
         </ng-container>
         <ng-container *ngIf="isBack">
-            <button mat-icon-button class="NavButtonMain" aria-label="Example icon-button with menu icon" mat-button (click)="navigateBack()">
+            <!-- <button mat-icon-button class="NavButtonMain" aria-label="Example icon-button with menu icon" mat-button (click)="navigateBack()">
                 <mat-icon aria-hidden="true" aria-label="menu icon">chevron_left</mat-icon>
-            </button>
+            </button> -->
+            <div matRipple [matRippleCentered]="true" class="iconMaster" (click)="navigateBack()"><img src="assets/icons/placeholder.jpg" /></div>
         </ng-container>
         <ng-container *ngIf="isBack">
             <span>Back</span>
@@ -99,12 +101,14 @@
             </div>
         </ng-container>
         <span class="example-spacer"></span>
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <div matRipple [matRippleCentered]="true" class="iconMaster" (click)="drawer.toggle()"><img src="assets/icons/placeholder.jpg" /></div>
+        <div style="margin-right: -5px;" matRipple [matRippleCentered]="true" class="iconMaster" (click)="drawer.toggle()"><img src="assets/icons/placeholder.jpg" /></div>
+        <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
             <mat-icon>notifications_active_outline</mat-icon>
         </button>
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
             <mat-icon>add_circle_outline</mat-icon>
-        </button>
+        </button> -->
     </mat-toolbar>
     
     <router-outlet (activate)="changeOfRoutes()"></router-outlet>
