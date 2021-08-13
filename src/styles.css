@@ -128,6 +128,10 @@ body, html {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
+.GeneralSansReg{
+    font-family: 'GeneralSans-Regular';
+}
+
 .app-container {
     max-width: 640px;
     margin: 0 auto;
@@ -156,9 +160,9 @@ p {
     -o-transform: unset;
 }
 
-html, body {
+/* html, body {
     height: 100%;
-}
+} */
 
 body {
     margin: 0;
@@ -183,6 +187,10 @@ p {
 
 p.small {
     font-size: 14px;
+    margin: 5px auto;
+}
+p.small.black{
+    color: #000;
 }
 
 .plyr__control--overlaid {
@@ -258,7 +266,7 @@ p.small {
 
 .mat-drawer-container {
     background: #fff!important;
-    max-height: 100vh;
+    /* max-height: 100vh; */
     overflow-x: hidden!important;
     overflow-y: auto!important;
 }
@@ -306,4 +314,54 @@ p.small {
 
 .mat-select-panel {
     background: #fff !important;
+}
+.mainLogoWrap{
+    margin-top: 20px;
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.mediaImageWrap{
+    border-radius: 8px;
+    overflow: hidden;
+}
+.mediaImageWrap p{  
+    margin-bottom: -5px;
+}
+/* .mediaImageWrap p img{
+    padding-bottom: 5px;
+} */
+.mediaImageWrap.smallBlock{
+    width: 100px;
+    height: 100px;
+    min-height: 100px;
+}
+.mediaImageWrap.smallBlock img{
+    width: 100px;
+    height: 100px;
+    min-height: unset;
+    object-fit: cover;
+}
+.contentPadding{
+    padding-right: 16px;
+    width: 100%;
+}
+.knowledgeBlock .title{
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    display: -webkit-box;
+    margin: 5px auto;
+}
+.mat-drawer-content{
+    overflow-x: hidden!important;
+}
+.knowledgeDivider{
+    margin: 0 auto;
+    border-bottom: solid 1px rgba(0,0,0,0.1);
+    width: calc(100% - 32px);
+}
+.opacityHidden{
+    opacity: 0;
 }

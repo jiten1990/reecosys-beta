@@ -46,7 +46,9 @@ import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 import { PlyrModule } from 'ngx-plyr';
 // import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
 import { SafePipe } from './safe.pipe';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoginComponent } from './page/login/login.component';
+import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
 
 
 
@@ -102,7 +104,9 @@ import { LoginComponent } from './page/login/login.component';
     MatTooltipModule,
     MatTreeModule,
     Angular2UsefulSwiperModule,
-    PlyrModule
+    PlyrModule,
+    InfiniteScrollModule,
+    AnimateOnScrollModule.forRoot()
   ],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   bootstrap: [AppComponent]

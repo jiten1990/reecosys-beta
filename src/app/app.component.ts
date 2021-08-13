@@ -1,14 +1,15 @@
 import { ConstantPool } from '@angular/compiler';
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'ssr-demo';
   showFiller = false;
 
@@ -21,7 +22,8 @@ export class AppComponent {
     private _location: Location,
     public route: ActivatedRoute
   ) {
-
+    
+    
     router.events.subscribe(event => {
 
       //window.scrollTo(0, 0);
@@ -37,6 +39,7 @@ export class AppComponent {
 
 
   }
+
 
   getTitle(state, parent) {
     var data = [];

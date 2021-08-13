@@ -3,6 +3,7 @@ import { KnowledgeService } from 'src/app/_services/knowledge.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SwiperOptions } from 'swiper';
+import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 // import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
 
 const knowledgeKey = makeStateKey('knowledgeListing');
@@ -57,18 +58,37 @@ export class KnowledgeListComponent implements OnInit {
 
   public knowledgeListing = [];
 
+  public page = 1;
+  public limit = 10;
+
   getKnowledges() {
+
     // this.categoryObj = {};
-    this.isLoading = true;
-    this.knowlegeService.knowledgeListing().subscribe((response: any) => {
-        if (response.success == 1) {
-            this.knowledgeListing = response.posts;
-            this.state.set(knowledgeKey, response.posts as any);
-        }
-        else {
-        }
-        this.isLoading = false;
-    });
+
+    if(!this.isLoading){
+      this.isLoading = true;
+      this.knowlegeService.knowledgeListing(this.page, this.limit).subscribe((response: any) => {
+          if (response.success == 1) {
+
+            if(!this.knowledgeListing){
+              this.knowledgeListing = response.posts;
+              this.state.set(knowledgeKey, response.posts as any);
+            }
+            else{
+              response.posts.forEach(element => {
+                  this.knowledgeListing.push(element);
+              });
+            }
+
+            this.page = this.page+1;
+            // this.state.set(knowledgeKey, response.posts as any);    
+              
+          }
+          else {
+          }
+          this.isLoading = false;
+      });
+    }
   }
 
 }

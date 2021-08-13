@@ -28,3 +28,53 @@
 .BottomToolbarNav span img{
     width: 24px;
 }
+
+.searchWrap{
+    width: 100%;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    color: #747474;
+    margin: 20px auto;
+}
+.searchWrap .iconWrap{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+.searchWrap input:focus{
+    outline: 0;
+    border: none;
+}
+.searchWrap input{
+    background: #F2F2F2;
+    width: calc(100% - 32px);
+    border: none;
+    padding: 12px 0;
+    padding-left: 32px;
+}
+.search-container{
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.flexBlock{
+    display: flex;
+}
+
+.operationIcon{
+
+}
+
+.flexBlock.verticalcenter{
+    align-items: center;
+    justify-content: center;
+}
+.flexBlock .bookmarkIcon{
+    margin-right: -10px;
+}
