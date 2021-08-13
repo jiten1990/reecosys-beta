@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
+import { SwiperOptions } from 'swiper';
 
 const knowledgeDetailsKey = makeStateKey('knowledge');
 
@@ -21,6 +22,23 @@ export class KnowledgeDetailComponent implements OnInit {
 
   public isApp = false;   
   
+  public config: SwiperOptions = {
+    pagination: { el: '.swiper-pagination', clickable: true },
+    slidesPerView: 1,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    spaceBetween: 30
+  };
+
+  public playerOptions = {
+    hideControls: true,
+    disableContextMenu : true,
+    autoplay : false,
+    muted: true,
+  }
+
   ngOnInit() {
 
     if(this.router.url.indexOf("app") > -1){
