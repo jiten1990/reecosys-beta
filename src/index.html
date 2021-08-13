@@ -40,6 +40,21 @@
       window.webkit.messageHandlers.getURL.postMessage(data);
     }
   }
+
+  function navigateBackApps(){
+    let chromeAgent = (navigator.userAgent.indexOf("Chrome") > -1);
+    if (chromeAgent) {
+      var url = "getBack";
+      var json = JSON.stringify(url);
+      javascript_object.getURL(json);
+    }
+    else {
+      var url = "getBack";
+      var data = JSON.stringify(url);
+      window.webkit.messageHandlers.getURL.postMessage(data);
+    }
+  }
+
 </script>
 
 <script type="text/javascript">

@@ -89,7 +89,12 @@
             <!-- <button mat-icon-button class="NavButtonMain" aria-label="Example icon-button with menu icon" mat-button (click)="navigateBack()">
                 <mat-icon aria-hidden="true" aria-label="menu icon">chevron_left</mat-icon>
             </button> -->
-            <div matRipple [matRippleCentered]="true" class="iconMaster" (click)="navigateBack()"><img src="assets/icons/placeholder.jpg" /></div>
+            <ng-container *ngIf="isApp">
+                <div matRipple [matRippleCentered]="true" class="iconMaster" onclick="navigateBackApps(this)"><img src="assets/icons/placeholder.jpg" /></div>
+            </ng-container>
+            <ng-container *ngIf="!isApp">
+                <div matRipple [matRippleCentered]="true" class="iconMaster" (click)="navigateBack()"><img src="assets/icons/placeholder.jpg" /></div>
+            </ng-container>
         </ng-container>
         <ng-container *ngIf="isBack">
             <span>Back</span>
