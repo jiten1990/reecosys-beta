@@ -1,21 +1,143 @@
+@font-face {
+    font-family: 'GeneralSans-Variable';
+    src: url('assets/fonts/GeneralSans-Variable.woff2') format('woff2'), url('assets/fonts/GeneralSans-Variable.woff') format('woff'), url('assets/fonts/GeneralSans-Variable.ttf') format('truetype');
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GeneralSans-VariableItalic';
+    src: url('assets/fonts/GeneralSans-VariableItalic.woff2') format('woff2'), url('assets/fonts/GeneralSans-VariableItalic.woff') format('woff'), url('assets/fonts/GeneralSans-VariableItalic.ttf') format('truetype');
+    font-weight: 200 700;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GeneralSans-Extralight';
+    src: url('assets/fonts/GeneralSans-Extralight.woff2') format('woff2'), url('assets/fonts/GeneralSans-Extralight.woff') format('woff'), url('assets/fonts/GeneralSans-Extralight.ttf') format('truetype');
+    font-weight: 200;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GeneralSans-ExtralightItalic';
+    src: url('assets/fonts/GeneralSans-ExtralightItalic.woff2') format('woff2'), url('assets/fonts/GeneralSans-ExtralightItalic.woff') format('woff'), url('assets/fonts/GeneralSans-ExtralightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GeneralSans-Light';
+    src: url('assets/fonts/GeneralSans-Light.woff2') format('woff2'), url('assets/fonts/GeneralSans-Light.woff') format('woff'), url('assets/fonts/GeneralSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GeneralSans-LightItalic';
+    src: url('assets/fonts/GeneralSans-LightItalic.woff2') format('woff2'), url('assets/fonts/GeneralSans-LightItalic.woff') format('woff'), url('assets/fonts/GeneralSans-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GeneralSans-Regular';
+    src: url('assets/fonts/GeneralSans-Regular.woff2') format('woff2'), url('assets/fonts/GeneralSans-Regular.woff') format('woff'), url('assets/fonts/GeneralSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GeneralSans-Italic';
+    src: url('assets/fonts/GeneralSans-Italic.woff2') format('woff2'), url('assets/fonts/GeneralSans-Italic.woff') format('woff'), url('assets/fonts/GeneralSans-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GeneralSans-Medium';
+    src: url('assets/fonts/GeneralSans-Medium.woff2') format('woff2'), url('assets/fonts/GeneralSans-Medium.woff') format('woff'), url('assets/fonts/GeneralSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GeneralSans-MediumItalic';
+    src: url('assets/fonts/GeneralSans-MediumItalic.woff2') format('woff2'), url('assets/fonts/GeneralSans-MediumItalic.woff') format('woff'), url('assets/fonts/GeneralSans-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GeneralSans-Semibold';
+    src: url('assets/fonts/GeneralSans-Semibold.woff2') format('woff2'), url('assets/fonts/GeneralSans-Semibold.woff') format('woff'), url('assets/fonts/GeneralSans-Semibold.ttf') format('truetype');
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GeneralSans-SemiboldItalic';
+    src: url('assets/fonts/GeneralSans-SemiboldItalic.woff2') format('woff2'), url('assets/fonts/GeneralSans-SemiboldItalic.woff') format('woff'), url('assets/fonts/GeneralSans-SemiboldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-display: swap;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'GeneralSans-Bold';
+    src: url('assets/fonts/GeneralSans-Bold.woff2') format('woff2'), url('assets/fonts/GeneralSans-Bold.woff') format('woff'), url('assets/fonts/GeneralSans-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GeneralSans-BoldItalic';
+    src: url('assets/fonts/GeneralSans-BoldItalic.woff2') format('woff2'), url('assets/fonts/GeneralSans-BoldItalic.woff') format('woff'), url('assets/fonts/GeneralSans-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+    font-style: italic;
+}
+
 /* You can add global styles to this file, and also import other style files */
-body, html{
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+
+body, html {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
-.app-container{
+
+.app-container {
     max-width: 640px;
     margin: 0 auto;
 }
-p{
+
+p {
     overflow: hidden;
 }
-.lazyImage{
+
+.lazyImage {
     /* filter: blur(5px); */
     width: 100%;
     min-height: 200px;
@@ -25,92 +147,163 @@ p{
     transition: filter ease-in 0.8s;
     transition: filter ease-in 0.8s; */
 }
-.ng-lazyloaded{
+
+.ng-lazyloaded {
     filter: blur(0);
     -moz-transform: unset;
     -webkit-transform: unset;
     -ms-transform: unset;
     -o-transform: unset;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-a, a:focus, a:hover{
-    color: #000;
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a, a:focus, a:hover {
+    color: #000000;
     text-decoration: none;
 }
-h2{
+
+h2 {
     font-size: 18px;
     line-height: 1.3;
     font-weight: normal;
     margin: 0;
 }
-p{
+
+p {
     margin: 0;
 }
-p.small{
-    font-size:14px;
+
+p.small {
+    font-size: 14px;
 }
-.plyr__control--overlaid{
+
+.plyr__control--overlaid {
     background-color: red!important;
 }
-.plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded=true]{
+
+.plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded=true] {
     background-color: red!important;
 }
-.plyr--full-ui input[type=range]{
+
+.plyr--full-ui input[type=range] {
     color: red!important
 }
-.bottom-bar-padding{
+
+.bottom-bar-padding {
     padding-bottom: 56px;
 }
-.gray{
-    color: #7C7C7C;
+
+.gray {
+    color: #666666;
 }
-.mat-icon{
+
+.light-gray {
+    color: #cccccc;
+}
+
+.red {
+    color: #cb202e;
+}
+
+.mat-icon {
     vertical-align: middle;
 }
-.otherLinks{
+
+.otherLinks {
     padding: 25px 0;
 }
-.otherLinks p{
+
+.otherLinks p {
     padding: 0px 16px;
     font-size: 14px;
     line-height: 32px;
 }
 
-.font-12{
+.font-12 {
     font-size: 12px;
     line-height: 1.2;
 }
-.font-16{
+
+.font-16 {
     font-size: 16px;
     line-height: 1.2;
 }
-.font-18{
+
+.font-18 {
     font-size: 18px;
     line-height: 1.2;
 }
-.font-22{
+
+.font-22 {
     font-size: 22px;
     line-height: 1.2;
 }
 
-.mat-toolbar{
+.font-25 {
+    font-size: 25px;
+    line-height: 1.2;
+}
+
+.mat-toolbar {
     background-color: #fff!important;
 }
-.mat-drawer-container{
+
+.mat-drawer-container {
     background: #fff!important;
     max-height: 100vh;
     overflow-x: hidden!important;
     overflow-y: auto!important;
 }
-.mat-drawer-container-has-open{
+
+.mat-drawer-container-has-open {
     overflow-x: hidden!important;
     overflow-y: hidden!important;
 }
-.mainLogoWrap i{
+
+.mainLogoWrap i {
     color: #000;
     font-weight: bold;
 }
-.mainToolBar .NavButtonMain{
+
+.mainToolBar .NavButtonMain {
     margin-left: -15px;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: rgb(255 255 255 / 4%);
+}
+
+.mat-form-field-label {
+    color: #333333;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: #333333;
+}
+
+.mat-select-value {
+    color: #333333;
+}
+
+.mat-select-arrow {
+    border-left: 7px solid transparent !important;
+    border-right: 7px solid transparent !important;
+    border-top: 7px solid !important;
+    margin: 0 4px;
+}
+
+.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: rgb(255 255 255 / 12%)!important;
+}
+
+.mat-select-panel {
+    background: #fff !important;
 }

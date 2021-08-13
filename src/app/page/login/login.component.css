@@ -1,0 +1,41 @@
+.loginLogoWrap {
+    position: relative;
+    width: 100%;
+    padding: 70px 0 30px 0;
+}
+
+.loginLogoWrap img {
+    width: 200px;
+    margin: 0 auto;
+    height: auto;
+}
+
+.loginTextWrap {
+    width: 100%;
+    text-align: center;
+}
+
+.loginTextWrap h2 {
+    font-family: 'GeneralSans-Medium';
+}
+
+.login_control_wrap {
+    padding: 70px 25px 50px 25px;
+}
+
+.login_control_wrap .select {
+    width: 30%;
+    display: inline-block;
+}
+
+.login_control_wrap .input_control {
+    width: 63%;
+    display: inline-block;
+    margin-left: 7%;
+}
+
+.mat-form-field-appearance-fill .mat-select-arrow-wrapper {
+    transform: translateY(0%) !important;
+}
+
+

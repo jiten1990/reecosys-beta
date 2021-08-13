@@ -1,7 +1,7 @@
 import { ConstantPool } from '@angular/compiler';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router} from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,15 +14,16 @@ export class AppComponent {
 
   public isApp = false;
   public isBack = false;
+  public noheader = false;
 
   constructor(
     private router: Router,
     private _location: Location,
-    public route : ActivatedRoute
-  ) { 
+    public route: ActivatedRoute
+  ) {
 
     router.events.subscribe(event => {
-      
+
       //window.scrollTo(0, 0);
 
       // if(this.router.url == '/' || this.router.url == '/home'){
@@ -41,16 +42,16 @@ export class AppComponent {
     var data = [];
     if (parent && parent.snapshot.data && parent.snapshot.data.title) {
 
-        var title =  parent.snapshot.data.title;
-        if(title != ""){
-          data.push(parent.snapshot.data.title);
-        }        
+      var title = parent.snapshot.data.title;
+      if (title != "") {
+        data.push(parent.snapshot.data.title);
+      }
     }
 
     if (state && parent) {
       var title1 = this.getTitle(state, state.firstChild(parent));
-      
-      if(title1.length > 0){
+
+      if (title1.length > 0) {
         title1.forEach(element => {
           data.push(element);
         });
@@ -60,18 +61,27 @@ export class AppComponent {
     return data;
   }
 
-  changeOfRoutes(){
+
+  changeOfRoutes() {
     var headerArr = this.getTitle(this.router.routerState, this.router.routerState.root);
-    var header = headerArr[headerArr.length-1];
-    if(header == "main"){
+    var header = headerArr[headerArr.length - 1];
+    if (header == "main") {
       this.isBack = false;
     }
-    else{
+    else {
       this.isBack = true;
     }
+
+    if (header == "noheader") {
+      this.noheader = true;
+    }
+    else {
+      this.noheader = false;
+    }
+    
   }
 
-  navigateBack(){
+  navigateBack() {
     this._location.back();
   }
 

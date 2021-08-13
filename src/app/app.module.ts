@@ -46,6 +46,8 @@ import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 import { PlyrModule } from 'ngx-plyr';
 // import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
 import { SafePipe } from './safe.pipe';
+import { LoginComponent } from './page/login/login.component';
+
 
 
 @NgModule({
@@ -54,7 +56,8 @@ import { SafePipe } from './safe.pipe';
     KnowledgeListComponent,
     KnowledgeDetailComponent,
     // NgxResponsiveEmbedComponent,
-    SafePipe
+    SafePipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

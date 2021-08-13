@@ -78,7 +78,7 @@
         </mat-list>
     </mat-drawer>
     
-    <mat-toolbar class="mainToolBar">
+    <mat-toolbar class="mainToolBar" *ngIf="!noheader">
         <ng-container *ngIf="!isBack">
             <button mat-icon-button class="NavButtonMain" aria-label="Example icon-button with menu icon" mat-button (click)="drawer.toggle()">
                 <mat-icon aria-hidden="true" aria-label="menu icon">menu</mat-icon>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 
@@ -13,19 +13,14 @@ const knowledgeDetailsKey = makeStateKey('knowledge');
 export class KnowledgeDetailComponent implements OnInit {
 
   constructor(
-    private router: Router,
     private knowlegeService: KnowledgeService,
     private route: ActivatedRoute,
     private state: TransferState
   ) { }
 
-  public isApp = false;
+
   
   ngOnInit() {
-
-    if(this.router.url.indexOf("app") > -1){
-      this.isApp = true;
-    }
 
     this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
     this.route.paramMap.subscribe(params => {
@@ -47,9 +42,7 @@ export class KnowledgeDetailComponent implements OnInit {
         if (response.success == 1) {
           this.knowledge = response.post;
           this.state.set(knowledgeDetailsKey, response.post as any);
-          if(!this.isApp){
-            this.state.set(knowledgeDetailsKey, null as any);
-          }
+          this.state.set(knowledgeDetailsKey, null as any);
         }
         else {
         }
