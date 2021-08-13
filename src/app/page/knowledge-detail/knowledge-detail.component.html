@@ -2,9 +2,9 @@
     <ng-container *ngIf="knowledge && knowledge.title != ''">
         <div style="margin-top: 15px; padding: 0 15px;">
             <h2>{{knowledge.title}}</h2>
-            <p>{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.profile.name}} - {{knowledge.relative_time}}</p>
+            <p *ngIf="knowledge.profile">{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.profile.name}} - {{knowledge.relative_time}}</p>
             <hr />
-            <p *ngIf="knowledge.media[0].media_url != ''">
+            <p *ngIf="knowledge.media && knowledge.media[0].media_url != ''">
                 <!-- <img [defaultImage]="knowledge.media[0].media_url_thumb" [lazyLoad]="knowledge.media[0].media_url" class="lazyImage" /> -->
                 <img src="https:{{knowledge.media[0].media_url}}" class="lazyImage" />
             </p>
