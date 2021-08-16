@@ -1,0 +1,100 @@
+<ng-container *ngIf="!isLoading && profile.name != ''">
+    <div class="app-container">
+        <div class="profile-container">
+            <div class="flexBlock verticalcenter">
+                <div class="profilePic">
+                    <img src="{{profile.profile_picture}}" />
+                </div>
+                <div class="profileInfo">
+                    <h2>{{profile.name}}</h2>
+                    <ng-container *ngIf="profile.designations.length > 0">
+                        <p class="small gray">{{profile.designations[0].designation}} at {{profile.designations[0].company_name}}</p>
+                    </ng-container>
+                    <ng-container>
+                        <p class="small gray">{{profile.followers}}k Followers &nbsp; {{profile.followings}}k Following</p>
+                    </ng-container>
+                    <!-- <ng-container>
+                        <p class="small red">Your membership expired on 13th Aug, 2021</p>
+                    </ng-container> -->
+                </div>
+            </div>
+        </div>
+        <div class="profileSeparator"></div>
+        <div class="profile-container">
+            <div class="bioContainer aboutContainer">
+                <h2>Bio</h2>
+                <p>{{profile.about}}</p>
+            </div>
+            <div class="workContainer aboutContainer">
+                <h2>Work</h2>
+                <div>
+                    <div class="flexBlock verticalcenter">
+                        <div class="otherIcon">
+                            <img src="assets/icons/placeholder.jpg" />
+                        </div>
+                        <div class="profileInfo">
+                            <p class="small">Shivalik Group | Since 1998</p>
+                            <p class="small">Managing Director | Real Estate <Br /> Developers Ahmedabad, Gujarat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="educationContainer aboutContainer">
+                <h2>Education</h2>
+                <div>
+                    <div class="flexBlock verticalcenter">
+                        <div class="otherIcon">
+                            <img src="assets/icons/placeholder.jpg" />
+                        </div>
+                        <div class="profileInfo">
+                            <p class="small" *ngFor="let education of profile.educations">{{education.education}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="interestContainer aboutContainer">
+                <h2>Interest</h2>
+                <div>
+                    <ul class="interestWrap">
+                        <li class="tagLike" *ngFor="let preference of profile.preferences">{{preference}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="locationContainer aboutContainer">
+                <h2>Location</h2>
+                <div>
+                    <p>{{profile.address}}</p>
+                </div>
+            </div>
+            <div class="contactContainer aboutContainer">
+                <h2>Contact Details</h2>
+                <div>
+                    <p class="contactIconWrap">
+                        <img src="assets/icons/placeholder.jpg" />
+                        <span><a href="tel:+91{{profile.mobile}}">+91 {{profile.mobile}}</a></span>
+                    </p>
+                    <p class="contactIconWrap">
+                        <img src="assets/icons/placeholder.jpg" />
+                        <span><a href="email:{{profile.email}}">{{profile.email}}</a></span>
+                    </p>
+                    <p class="contactIconWrap" *ngFor="let link of profile.links">
+                        <img src="assets/icons/placeholder.jpg" />
+                        <span><a href="{{link.links}}" target="_blank">{{link.links}}</a></span>
+                    </p>
+                </div>
+            </div>
+            <div class="contactContainer aboutContainer">
+                <h2>Social</h2>
+                <div>
+                    <ul class="socialWrap">
+                        <li *ngFor="let link of profile.social_links">
+                            <a href="{{link.profile_url}}" target="_blank">
+                                <img src="assets/icons/placeholder.jpg" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

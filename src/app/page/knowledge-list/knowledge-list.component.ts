@@ -4,6 +4,7 @@ import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swiper, { SwiperOptions } from 'swiper';
 import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
+// import { KnowledgeBlockComponent } from 'src/app/includes/knowledge-block/knowledge-block.component';
 // import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
 
 const knowledgeKey = makeStateKey('knowledgeListing');

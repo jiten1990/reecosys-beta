@@ -1,3 +1,17 @@
 .mat-sidenav-main{
     width: 75%;
 }
+.backIcon img{
+    height: 20px!important;
+    width: 20px!important;
+    opacity: 1!important;
+    margin-left: -10px!important;
+    border-radius: 0!important;
+}
+.otherIcon img{
+    border-radius: 0;
+    height: 15px!important;
+    width: 15px!important;
+    padding: 5px!important;
+    opacity: 1!important;
+}

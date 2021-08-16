@@ -13,6 +13,16 @@ export class KnowledgeService {
     private http: HttpClient,
   ) { }
 
+  getUserProfile(user_id){
+    const url = environment.apiUrl + 'services/get_user_profile';
+    let body = new HttpParams();
+    body = body.append("user_id", user_id);   
+
+    let httpHeaders = new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    return this.http.post(url, body, { headers: httpHeaders });
+  }
 
   knowledgeListing(page, limit, otherObject) {
     const url = environment.apiUrl + 'services/dashboard_posts';

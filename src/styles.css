@@ -129,7 +129,7 @@ body, html {
 }
 
 .GeneralSansReg{
-    font-family: 'GeneralSans-Regular';
+    font-family: 'GeneralSans-Medium';
 }
 .GeneralSansSemiBold{
     font-family: 'GeneralSans-Semibold';
@@ -170,7 +170,9 @@ p {
 
 body {
     margin: 0;
+    font: -apple-system-body;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+
 }
 
 a, a:focus, a:hover {
@@ -369,7 +371,7 @@ a {
     -webkit-box-orient: vertical;
     overflow: hidden;
     display: -webkit-box;
-    margin: 5px auto;
+    margin: 0px auto;
 }
 .mat-drawer-content{
     overflow-x: hidden!important;
@@ -389,6 +391,7 @@ a {
     height: 24px;
     width: 24px;
     border-radius: 15px;
+    opacity: 0.3;
 }
 
 .flexBlock{
@@ -419,6 +422,7 @@ a {
 
 .radiusButton{
     border-radius: 25px!important;
+    
 }
 
 .image-responsive{

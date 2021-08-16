@@ -49,6 +49,9 @@ import { SafePipe } from './safe.pipe';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { LoginComponent } from './page/login/login.component';
 import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
+import { ProfileComponent } from './page/profile/profile.component';
+import { ReadMoreComponent } from './plugins/read-more/read-more.component';
+import { KnowledgeBlockComponent } from './includes/knowledge-block/knowledge-block.component';
 
 
 
@@ -59,7 +62,10 @@ import { AnimateOnScrollModule } from 'ng2-animate-on-scroll';
     KnowledgeDetailComponent,
     // NgxResponsiveEmbedComponent,
     SafePipe,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    ReadMoreComponent,
+    KnowledgeBlockComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

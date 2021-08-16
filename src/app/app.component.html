@@ -91,15 +91,15 @@
                 <mat-icon aria-hidden="true" aria-label="menu icon">chevron_left</mat-icon>
             </button> -->
             <ng-container *ngIf="isApp">
-                <div matRipple [matRippleCentered]="true" class="iconMaster" onclick="navigateBackApps(this)"><img src="assets/icons/placeholder.jpg" /></div>
+                <div matRipple [matRippleCentered]="true" class="iconMaster backIcon" onclick="navigateBackApps(this)"><img src="assets/icons/back.png" /></div>
             </ng-container>
             <ng-container *ngIf="!isApp">
-                <div matRipple [matRippleCentered]="true" class="iconMaster" (click)="navigateBack()"><img src="assets/icons/placeholder.jpg" /></div>
+                <div matRipple [matRippleCentered]="true" class="iconMaster backIcon" (click)="navigateBack()"><img src="assets/icons/back.png" /></div>
             </ng-container>
         </ng-container>
-        <ng-container *ngIf="isBack">
+        <!-- <ng-container *ngIf="isBack">
             <span>Back</span>
-        </ng-container>
+        </ng-container> -->
         <ng-container *ngIf="!isBack">
             <div class="mainLogoWrap">
                 <img src="assets/logo.png" height="20"  style="display: block;"/>
@@ -107,8 +107,14 @@
             </div>
         </ng-container>
         <span class="example-spacer"></span>
-        <div matRipple [matRippleCentered]="true" class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
-        <div style="margin-right: -5px;" matRipple [matRippleCentered]="true" class="iconMaster" ><img src="assets/icons/placeholder.jpg" /></div>
+        <ng-container *ngIf="!isBack">
+            <div matRipple [matRippleCentered]="true" class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
+            <div style="margin-right: -5px;" matRipple [matRippleCentered]="true" class="iconMaster" ><img src="assets/icons/placeholder.jpg" /></div>
+        </ng-container>
+        <ng-container *ngIf="isBack">
+            <div matRipple [matRippleCentered]="true" class="iconMaster otherIcon"><img src="assets/icons/bookmark.png" /></div>
+            <div style="margin-right: -5px;" matRipple [matRippleCentered]="true" class="iconMaster otherIcon" ><img src="assets/icons/share.png" /></div>
+        </ng-container>
         <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
             <mat-icon>notifications_active_outline</mat-icon>
         </button>
