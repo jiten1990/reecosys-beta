@@ -418,3 +418,7 @@ a {
 .radiusButton{
     border-radius: 25px!important;
 }
+
+.image-responsive{
+    max-width: 100%;
+}

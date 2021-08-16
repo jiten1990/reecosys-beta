@@ -25,7 +25,7 @@
                                             <a class="GeneralSansReg title" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+knowledge.post_id" href="javascript:void(0)">{{knowledge.title}}</a>
                                         </ng-container>
                                         <ng-container *ngIf="!isApp">
-                                            <a class="GeneralSansReg title" routerLink="knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a>
+                                            <a class="GeneralSansReg title" routerLink="/knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a>
                                         </ng-container>
 
                                     </ng-container>
@@ -37,7 +37,7 @@
                                                     <a class="title GeneralSansReg" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+knowledge.post_id" href="javascript:void(0)">{{knowledge.title}}</a>
                                                 </ng-container>
                                                 <ng-container *ngIf="!isApp">
-                                                    <a class="title GeneralSansReg" routerLink="knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a>
+                                                    <a class="title GeneralSansReg" routerLink="/knowledge/{{knowledge.post_id}}">{{knowledge.title}}</a>
                                                 </ng-container>
                                                 <p class="small gray">{{knowledge.location}} <span *ngIf="knowledge.location != ''"> - </span> {{knowledge.relative_time}}</p>
                                             </div>
@@ -131,13 +131,13 @@
                                             <a *ngIf="isApp" matRipple class="GeneralSansReg trendingTitle" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+trendingKnowledge.post_id">
                                                 <img data-src="{{trendingKnowledge.media[0].media_url_thumb}}" data-srcset="{{trendingKnowledge.media[0].media_url.replace('upload/', 'upload/w_640/q_auto/')}}" class="swiper-lazy mainTrendingImage" />
                                             </a>
-                                            <a *ngIf="!isApp" matRipple class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">
+                                            <a *ngIf="!isApp" matRipple class="GeneralSansReg trendingTitle" routerLink="/knowledge/{{trendingKnowledge.post_id}}">
                                                 <img data-src="{{trendingKnowledge.media[0].media_url_thumb}}" data-srcset="{{trendingKnowledge.media[0].media_url.replace('upload/', 'upload/w_640/q_auto/')}}" class="swiper-lazy mainTrendingImage" />
                                             </a>
                                             <div class="trendingContent">
                                                 <p>
                                                     <a *ngIf="isApp" matRipple class="GeneralSansReg trendingTitle" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+trendingKnowledge.post_id">{{trendingKnowledge.title}}</a>
-                                                    <a *ngIf="!isApp" matRipple class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">{{trendingKnowledge.title}}</a>
+                                                    <a *ngIf="!isApp" matRipple class="GeneralSansReg trendingTitle" routerLink="/knowledge/{{trendingKnowledge.post_id}}">{{trendingKnowledge.title}}</a>
                                                 </p>
                                                 <p class="small gray">{{trendingKnowledge.location}} <span *ngIf="trendingKnowledge.location != ''"> - </span> {{trendingKnowledge.relative_time}}</p>
                                                 <div class="flexBlock verticalcenter operationIcon">

@@ -18,7 +18,7 @@ export class KnowledgeListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute,
+    private route: ActivatedRoute,
     private knowlegeService: KnowledgeService,
     private state: TransferState
   ) { }
@@ -30,16 +30,23 @@ export class KnowledgeListComponent implements OnInit {
     if(this.router.url.indexOf("app") > -1){
       this.isApp = true;
     }
+    
 
     //this.trendingPosts = this.state.get(trendingKey, null as any);
 
-    this.knowledgeListing = this.state.get(knowledgeKey, null as any);
+    // this.knowledgeListing = this.state.get(knowledgeKey, null as any);
 
-    if(!this.knowledgeListing){
-      this.getKnowledges();
-    }
+    // if(!this.knowledgeListing){
+      
+    // }
     // if(!this.trendingPosts){
-      this.getTrendingPosts();
+
+      this.route.paramMap.subscribe(params => {
+        this.getKnowledges();
+        if(this.route.snapshot.params['tag_id'] == ""){
+          this.getTrendingPosts();
+        }
+      })
     // }
 
   }
@@ -77,18 +84,29 @@ export class KnowledgeListComponent implements OnInit {
   public page = 1;
   public limit = 15;
 
+  public otherFilterObj = {
+    tag_id : ""
+  };
+
   getKnowledges() {
 
     // this.categoryObj = {};
 
     if(!this.isLoading){
       this.isLoading = true;
-      this.knowlegeService.knowledgeListing(this.page, this.limit).subscribe((response: any) => {
+
+      
+
+      if(this.route.snapshot.params['tag_id']){
+        this.otherFilterObj.tag_id = this.route.snapshot.params['tag_id']
+      }
+
+      this.knowlegeService.knowledgeListing(this.page, this.limit, this.otherFilterObj).subscribe((response: any) => {
           if (response.success == 1) {
 
             if(!this.knowledgeListing){
               this.knowledgeListing = response.posts;
-              this.state.set(knowledgeKey, response.posts as any);
+              // this.state.set(knowledgeKey, response.posts as any);
             }
             else{
               response.posts.forEach(element => {

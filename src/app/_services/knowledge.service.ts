@@ -14,12 +14,14 @@ export class KnowledgeService {
   ) { }
 
 
-  knowledgeListing(page, limit) {
+  knowledgeListing(page, limit, otherObject) {
     const url = environment.apiUrl + 'services/dashboard_posts';
     let body = new HttpParams();
     body = body.append('maxWidth', '640');
     body = body.append('page', page);
     body = body.append('limit', limit);
+    body = body.append("tag_ids", otherObject.tag_id);   
+
     let httpHeaders = new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'
     });

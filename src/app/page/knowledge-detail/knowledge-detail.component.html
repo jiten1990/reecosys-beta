@@ -68,11 +68,11 @@
                             <div *ngIf="i < 2 || isReadMore">
                                 <ng-container *ngIf="block.block_type == 'image' && block.block_content != ''">
                                     <!-- <img [defaultImage]="block.block_content" [lazyLoad]="block.block_content" class="lazyImage" /> -->
-                                    <img src="https:{{block.block_content}}" class="lazyImage" />
+                                    <img src="https:{{block.block_content}}" class="image-responsive" />
                                 </ng-container>
                                 <ng-container *ngIf="block.block_type == 'slider' && block.block_content != ''">
                                     <!-- <img [defaultImage]="block.block_content" [lazyLoad]="block.block_content" class="lazyImage" /> -->
-                                    <img src="https:{{block.block_content}}" class="lazyImage" />
+                                    <img  src="https:{{block.block_content}}"  class="image-responsive" />
                                 </ng-container>
                                 <ng-container *ngIf="block.block_type == 'text'">
                                     <p [innerHtml]="block.block_content"></p>
@@ -94,12 +94,26 @@
                         </div>
                     </div>
 
+                    <div class="commentBlock">
+                        <!-- <button mat-flat-button (click)="readMoreContent()" color="primary">Read More</button> -->
+                        <div matRipple class="tabBox black">
+                            <p style="margin: 0">View Comments</p>
+                        </div>
+                    </div>
+
+                    <div class="tagDivierWrap">
+                        <div class="tagBlockSeparator"></div>
+                    </div>
 
                     <div class="tagWrapper">
                         <ng-container *ngFor="let tag of knowledge.tags">
                             <ng-container *ngIf="tag.tag != ''">
                                 <div matRipple class="tabBox grayBg">
-                                    <h2>{{tag.tag}}</h2>
+                                    <h2>
+                                        <a routerLink="/tag-knowledges/{{tag.tag_id}}">
+                                            {{tag.tag}}
+                                        </a>
+                                    </h2>
                                 </div>
                             </ng-container>
                         </ng-container>

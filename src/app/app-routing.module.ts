@@ -11,6 +11,7 @@ const routes: Routes = [
     path: '',
     children: [
       { path: '', component: KnowledgeListComponent, data: { title: "main" } },
+      { path: 'tag-knowledges/:tag_id', component: KnowledgeListComponent, data: { title: "main" } },
       { path: 'login', component: LoginComponent, data: { title: "noheader" } },
       { path: 'knowledge/:post_id', component: KnowledgeDetailComponent, data: { title: "back" } },
     ],
@@ -20,6 +21,7 @@ const routes: Routes = [
     path: 'app',
     children: [
       { path: '', component: KnowledgeListComponent, data: { title: "main" } },
+      { path: 'tag-knowledges/:tag_id', component: KnowledgeListComponent, data: { title: "main" } },
       { path: 'login', component: LoginComponent, data: { title: "noheader" } },
       { path: 'knowledge/:post_id', component: KnowledgeDetailComponent, data: { title: "back" } },
     ]
