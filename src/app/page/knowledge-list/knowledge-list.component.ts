@@ -88,15 +88,15 @@ export class KnowledgeListComponent implements OnInit {
     tag_id : ""
   };
 
+  public firstLoading = true;
+
   getKnowledges() {
 
     // this.categoryObj = {};
 
     if(!this.isLoading){
       this.isLoading = true;
-
       
-
       if(this.route.snapshot.params['tag_id']){
         this.otherFilterObj.tag_id = this.route.snapshot.params['tag_id']
       }
@@ -107,6 +107,7 @@ export class KnowledgeListComponent implements OnInit {
             if(!this.knowledgeListing){
               this.knowledgeListing = response.posts;
               // this.state.set(knowledgeKey, response.posts as any);
+              this.firstLoading = false;
             }
             else{
               response.posts.forEach(element => {
