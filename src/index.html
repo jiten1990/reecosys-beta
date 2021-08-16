@@ -42,17 +42,17 @@
   }
 
   function navigateBackApps(){
-    let chromeAgent = (navigator.userAgent.indexOf("Chrome") > -1);
-    if (chromeAgent) {
-      var url = "getBack";
+    // let chromeAgent = (navigator.userAgent.indexOf("Chrome") > -1);
+    // if (chromeAgent) {
+      var url = "";
       var json = JSON.stringify(url);
       getBack.getURL(json);
-    }
-    else {
-      var url = "getBack";
-      var data = JSON.stringify(url);
-      window.webkit.messageHandlers.getURL.postMessage(data);
-    }
+    // }
+    // else {
+    //   var url = "getBack";
+    //   var data = JSON.stringify(url);
+    //   window.webkit.messageHandlers.getURL.postMessage(data);
+    // }
   }
 
 </script>
