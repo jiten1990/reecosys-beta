@@ -106,7 +106,7 @@ export class KnowledgeDetailComponent implements OnInit {
      this.isReadMore = false;
   }
 
-  public isLoading = false;
+  public isLoading = true;
 
   public knowledge : any = {};
 
@@ -132,7 +132,10 @@ export class KnowledgeDetailComponent implements OnInit {
         }
         else {
         }
-        this.isLoading = false;
+
+        setTimeout (() => {
+          this.isLoading = false;
+        }, 300)
     });
   }
 
