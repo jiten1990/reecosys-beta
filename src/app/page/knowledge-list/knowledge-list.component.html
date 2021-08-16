@@ -117,7 +117,7 @@
                             <div class="knowledgeDivider"></div>
                         </div>
 
-                        <ng-container *ngIf="i >= 2 && i < 3">
+                        <ng-container *ngIf="i >= 10 && i < 11">
 
                             <div class="trendingWrapMain">
                                 <div class="trendingWrap">
@@ -133,7 +133,7 @@
                                             </a>
                                             <div class="trendingContent">
                                                 <p>
-                                                    <a class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">{{trendingKnowledge.title}}</a>
+                                                    <a matRipple class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">{{trendingKnowledge.title}}</a>
                                                 </p>
                                                 <p class="small gray">{{trendingKnowledge.location}} <span *ngIf="trendingKnowledge.location != ''"> - </span> {{trendingKnowledge.relative_time}}</p>
                                                 <div class="flexBlock verticalcenter operationIcon">

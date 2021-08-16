@@ -7,7 +7,7 @@ import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 // import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
 
 const knowledgeKey = makeStateKey('knowledgeListing');
-const trendingKey = makeStateKey('knowledgeListing');
+// const trendingKey = makeStateKey('knowledgeListing');
 
 @Component({
   selector: 'app-knowledge-list',
@@ -31,16 +31,16 @@ export class KnowledgeListComponent implements OnInit {
       this.isApp = true;
     }
 
-    this.trendingPosts = this.state.get(trendingKey, null as any);
+    //this.trendingPosts = this.state.get(trendingKey, null as any);
 
     this.knowledgeListing = this.state.get(knowledgeKey, null as any);
 
     if(!this.knowledgeListing){
       this.getKnowledges();
     }
-    if(!this.trendingPosts){
+    // if(!this.trendingPosts){
       this.getTrendingPosts();
-    }
+    // }
 
   }
 
@@ -58,6 +58,7 @@ export class KnowledgeListComponent implements OnInit {
     slidesPerView: 1.5,
     spaceBetween: 15,
     slidesOffsetBefore: 15,
+    slidesOffsetAfter: 15,
     preloadImages: false,
     lazy: true
   };
@@ -74,7 +75,7 @@ export class KnowledgeListComponent implements OnInit {
   public knowledgeListing = [];
 
   public page = 1;
-  public limit = 10;
+  public limit = 15;
 
   getKnowledges() {
 
@@ -120,7 +121,7 @@ export class KnowledgeListComponent implements OnInit {
       this.knowlegeService.trendingListing().subscribe((response: any) => {
           if (response.success == 1) {
               this.trendingPosts = response.posts;
-              this.state.set(trendingKey, response.posts as any);
+              //this.state.set(trendingKey, this.trendingPosts as any);
           }
           this.isLoadingTrending = false;
       });
