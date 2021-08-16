@@ -190,7 +190,9 @@ h2 {
 p {
     margin: 0;
 }
-
+a.small{
+    font-size: 14px;
+}
 p.small {
     font-size: 14px;
     margin: 5px auto;
@@ -427,4 +429,18 @@ a {
 
 .image-responsive{
     max-width: 100%;
+}
+.commentBoxWrap{
+
+}
+.commentBox{
+    border: solid 1px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    width: calc(100% - 20px);
+    padding: 10px;
+}
+
+.profileWrap p.small.black{
+    opacity: 0;
+    height: 0;
 }

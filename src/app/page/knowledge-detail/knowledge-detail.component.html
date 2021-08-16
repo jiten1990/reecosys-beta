@@ -7,11 +7,15 @@
             <div class="inlineProfile">
                 <div class="flexBlock verticalcenter">
                     <div class="profilePic">
-                        <img src="{{knowledge.profile.profile_picture}}" />
+                        <a routerLink="/profile/{{knowledge.profile.user_id}}">
+                            <img src="{{knowledge.profile.profile_picture}}" />
+                        </a>
                     </div>
                     <div class="profileInfo">
                         <h2>
-                            {{knowledge.profile.name}} 
+                            <a routerLink="/profile/{{knowledge.profile.user_id}}">
+                                {{knowledge.profile.name}} 
+                            </a>
                             <span class="dotSeparator"></span>
                             <a href="javascript:void(0)" class="followBtn GeneralSansReg">
                                 Follow
@@ -93,24 +97,25 @@
                         </ng-container>
                         <div class="overlayShaddow" *ngIf="!isReadMore && knowledge.blocks.length > 2"></div>
                     </div>
-                    <div class="readMoreBlock" *ngIf="!isReadMore && knowledge.blocks.length > 2">
-                        <!-- <button mat-flat-button (click)="readMoreContent()" color="primary">Read More</button> -->
+                    <!-- <div class="readMoreBlock" *ngIf="!isReadMore && knowledge.blocks.length > 2">
                         <div matRipple class="tabBox" (click)="readMoreContent()">
                             <p style="margin: 0">Read More</p>
                         </div>
                     </div>
                     <div class="readMoreBlock" *ngIf="isReadMore">
-                        <!-- <button mat-flat-button (click)="readMoreContent()" color="primary">Read More</button> -->
                         <div matRipple class="tabBox" (click)="readLessContent()">
                             <p style="margin: 0">Read Less</p>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="commentBlock">
                         <!-- <button mat-flat-button (click)="readMoreContent()" color="primary">Read More</button> -->
-                        <div matRipple class="tabBox black">
+                        <!-- <div matRipple class="tabBox black">
                             <p style="margin: 0">View Comments</p>
-                        </div>
+                        </div> -->
+                        <!-- <div class="commentBoxWrap">
+                            <textarea rows="6" class="commentBox" placeholder="Your comments"></textarea>
+                        </div> -->
                     </div>
 
                     <div class="tagDivierWrap">
@@ -118,43 +123,51 @@
                     </div>
 
                     <div class="tagWrapper">
-                        <ng-container *ngFor="let tag of knowledge.tags">
-                            <ng-container *ngIf="tag.tag != ''">
-                                <div matRipple class="tabBox grayBg">
-                                    <h2>
+
+                        <div class="tagWrapperInner">
+
+                            <h2 class="GeneralSansSemiBold">Tagged with the Article</h2>
+                            <br />
+
+                            <ng-container *ngFor="let tag of knowledge.tags">
+                                <ng-container *ngIf="tag.tag != ''">
+                                    <div class="tabBox grayBg">
+                                        <!-- <h2> -->
+                                            <div class="flexBlock verticalcenter">
+                                                <div class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
+                                                    <a class="small" routerLink="/tag-knowledges/{{tag.tag_id}}">
+                                                        {{tag.tag}}
+                                                    </a>
+                                                <div class="arrow">
+                                                    <mat-icon>arrow_forward_ios</mat-icon>
+                                                </div>
+                                            </div>
+                                        <!-- </h2> -->
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                            <ng-container *ngFor="let user of knowledge.users">
+                                <ng-container *ngIf="user.name != ''">
+                                    <div class="tabBox grayBg">
                                         <div class="flexBlock verticalcenter">
-                                            <div matRipple [matRippleCentered]="true" class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
-                                            <a routerLink="/tag-knowledges/{{tag.tag_id}}">
-                                                {{tag.tag}}
-                                            </a>
-                                            <div class="arrow">
-                                                <mat-icon>arrow_forward_ios</mat-icon>
+                                            <div class="profilePic">
+                                                <img src="{{user.profile_picture}}" />
+                                            </div>
+                                            <div class="profileInfo">
+                                                <p class="small">{{user.name}}</p>
+                                                <ng-container *ngIf="user.designations.length > 0">
+                                                    <p class="small gray">{{user.designations[0].designation}} at {{knowledge.profile.designations[0].company_name}}</p>
+                                                </ng-container>
                                             </div>
                                         </div>
-                                    </h2>
-                                </div>
-                            </ng-container>
-                        </ng-container>
-                        <ng-container *ngFor="let user of knowledge.users">
-                            <ng-container *ngIf="user.name != ''">
-                                <div matRipple class="tabBox grayBg">
-                                    <div class="flexBlock verticalcenter">
-                                        <div class="profilePic">
-                                            <img src="{{user.profile_picture}}" />
-                                        </div>
-                                        <div class="profileInfo">
-                                            <h2>{{user.name}}</h2>
-                                            <ng-container *ngIf="user.designations.length > 0">
-                                                <p class="small gray">{{user.designations[0].designation}} at {{knowledge.profile.designations[0].company_name}}</p>
-                                            </ng-container>
+                                        <div class="arrow">
+                                            <mat-icon>arrow_forward_ios</mat-icon>
                                         </div>
                                     </div>
-                                    <div class="arrow">
-                                        <mat-icon>arrow_forward_ios</mat-icon>
-                                    </div>
-                                </div>
+                                </ng-container>
                             </ng-container>
-                        </ng-container>
+
+                        </div>
                     </div>
 
                 </div>
@@ -167,7 +180,7 @@
 
 
             <div class="similarNewsWrap">
-                <h2 class="GeneralSansSemiBold">Similar News</h2>
+                <h2 class="GeneralSansSemiBold">Recommended Articles</h2>
                 <div class="simiarNews">
                     <div class="app-container bottom-bar-padding" infiniteScroll [infiniteScrollDistance]="5"  (scrolled)="getKnowledges()">
                         <ng-container>

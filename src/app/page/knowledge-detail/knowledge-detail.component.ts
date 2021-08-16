@@ -44,7 +44,7 @@ export class KnowledgeDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.isReadMore = false;
+    this.isReadMore = true;
 
     if(this.router.url.indexOf("app") > -1){
       this.isApp = true;

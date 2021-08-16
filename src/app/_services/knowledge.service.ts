@@ -30,7 +30,12 @@ export class KnowledgeService {
     body = body.append('maxWidth', '640');
     body = body.append('page', page);
     body = body.append('limit', limit);
-    body = body.append("tag_ids", otherObject.tag_id);   
+    if(otherObject.tag_id){
+      body = body.append("tag_ids", otherObject.tag_id);   
+    }
+    if(otherObject.for_user_id){
+      body = body.append("for_user_id", otherObject.for_user_id);   
+    }
 
     let httpHeaders = new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'

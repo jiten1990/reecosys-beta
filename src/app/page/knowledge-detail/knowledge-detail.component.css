@@ -71,7 +71,7 @@ p:not(.small){
     top: 50%;
     transform: translateY(-50%);
     right: 8px;
-    color: #587389;
+    color: #d0d0d0;
 }
 .tabBox.grayBg{
     /* background-color: #F2F2F2; */
@@ -93,16 +93,22 @@ p:not(.small){
     margin-right: -32px;
 }
 .tagBlockSeparator{
-    margin: 0px 0 32px 0;
+    /* margin: 0px 0 32px 0; */
     height: 1px;
     display: block;
     width: 100%;
-    border-bottom: solid 1px rgba(0,0,0,0.1);
+    /* border-bottom: solid 1px rgba(0,0,0,0.1); */
     border-radius: 8px;
 }
 .tagWrapper{
-    /* margin-left: -16px;
-    margin-right: -16px; */
+    margin-left: -16px;
+    margin-right: -16px;
+    background-color: #f7f7f7;
+    padding: 16px 0;
+}
+.tagWrapperInner{
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .commentBlock{

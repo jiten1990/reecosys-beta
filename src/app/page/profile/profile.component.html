@@ -1,5 +1,5 @@
-<ng-container *ngIf="!isLoading && profile.name != ''">
-    <div class="app-container">
+<ng-container >
+    <div class="app-container profileWrap">
         <div class="profile-container">
             <div class="flexBlock verticalcenter">
                 <div class="profilePic">
@@ -11,7 +11,7 @@
                         <p class="small gray">{{profile.designations[0].designation}} at {{profile.designations[0].company_name}}</p>
                     </ng-container>
                     <ng-container>
-                        <p class="small gray">{{profile.followers}}k Followers &nbsp; {{profile.followings}}k Following</p>
+                        <p class="small gray">{{profile.followers}} Followers &nbsp; {{profile.followings}} Following</p>
                     </ng-container>
                     <!-- <ng-container>
                         <p class="small red">Your membership expired on 13th Aug, 2021</p>
@@ -21,13 +21,23 @@
         </div>
         <div class="profileSeparator"></div>
         <div class="profile-container">
-            <div class="bioContainer aboutContainer">
-                <h2>Bio</h2>
+            <div class="bioContainer aboutContainer" *ngIf="profile.about != ''">
+                <h2 class="GeneralSansReg">Bio</h2>
                 <p>{{profile.about}}</p>
+                <!-- <app-read-more
+                    [content]="profile.about"
+                    [limit]="90"
+                    [completeWords]="true"
+                ></app-read-more> -->
             </div>
-            <div class="workContainer aboutContainer">
-                <h2>Work</h2>
-                <div>
+            <!-- <div class="workContainer aboutContainer" *ngIf="profile.about != ''">
+                <h2 class="GeneralSansReg" (click)="toggleAccorion('work')">Work 
+                    <a href="javascript:void(0)"  class="pull-right">
+                        <mat-icon *ngIf="activeAccordions.indexOf('work') < 0">expand_more</mat-icon>
+                        <mat-icon *ngIf="activeAccordions.indexOf('work') > -1">expand_less</mat-icon>
+                    </a>
+                </h2>
+                <div class="myAccordionWrap" [class.open]="activeAccordions.indexOf('work') > -1">
                     <div class="flexBlock verticalcenter">
                         <div class="otherIcon">
                             <img src="assets/icons/placeholder.jpg" />
@@ -38,10 +48,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="educationContainer aboutContainer">
-                <h2>Education</h2>
-                <div>
+            </div> -->
+            <div class="educationContainer aboutContainer" *ngIf="profile.educations.length > 0">
+                <h2 class="GeneralSansReg" (click)="toggleAccorion('education')">Education
+                    <a href="javascript:void(0)" class="pull-right">
+                        <mat-icon *ngIf="activeAccordions.indexOf('education') < 0">expand_more</mat-icon>
+                        <mat-icon *ngIf="activeAccordions.indexOf('education') > -1">expand_less</mat-icon>
+                    </a>
+                </h2>
+                <div class="myAccordionWrap" [class.open]="activeAccordions.indexOf('education') > -1">
                     <div class="flexBlock verticalcenter">
                         <div class="otherIcon">
                             <img src="assets/icons/placeholder.jpg" />
@@ -52,23 +67,38 @@
                     </div>
                 </div>
             </div>
-            <div class="interestContainer aboutContainer">
-                <h2>Interest</h2>
-                <div>
+            <div class="interestContainer aboutContainer" *ngIf="profile.preferences.length > 0">
+                <h2 class="GeneralSansReg" (click)="toggleAccorion('interest')">Interest
+                    <a href="javascript:void(0)" class="pull-right">
+                        <mat-icon *ngIf="activeAccordions.indexOf('interest') < 0">expand_more</mat-icon>
+                        <mat-icon *ngIf="activeAccordions.indexOf('interest') > -1">expand_less</mat-icon>
+                    </a>
+                </h2>
+                <div class="myAccordionWrap" [class.open]="activeAccordions.indexOf('interest') > -1">
                     <ul class="interestWrap">
                         <li class="tagLike" *ngFor="let preference of profile.preferences">{{preference}}</li>
                     </ul>
                 </div>
             </div>
-            <div class="locationContainer aboutContainer">
-                <h2>Location</h2>
-                <div>
+            <div class="locationContainer aboutContainer" *ngIf="profile.address != ''">
+                <h2 class="GeneralSansReg" (click)="toggleAccorion('location')">Location
+                    <a href="javascript:void(0)" class="pull-right">
+                        <mat-icon *ngIf="activeAccordions.indexOf('location') < 0">expand_more</mat-icon>
+                        <mat-icon *ngIf="activeAccordions.indexOf('location') > -1">expand_less</mat-icon>
+                    </a>
+                </h2>
+                <div class="myAccordionWrap" [class.open]="activeAccordions.indexOf('location') > -1">
                     <p>{{profile.address}}</p>
                 </div>
             </div>
             <div class="contactContainer aboutContainer">
-                <h2>Contact Details</h2>
-                <div>
+                <h2 class="GeneralSansReg" (click)="toggleAccorion('contact')" >Contact
+                    <a href="javascript:void(0)" class="pull-right">
+                        <mat-icon *ngIf="activeAccordions.indexOf('contact') < 0">expand_more</mat-icon>
+                        <mat-icon *ngIf="activeAccordions.indexOf('contact') > -1">expand_less</mat-icon>
+                    </a>
+                </h2>
+                <div class="myAccordionWrap" [class.open]="activeAccordions.indexOf('contact') > -1">
                     <p class="contactIconWrap">
                         <img src="assets/icons/placeholder.jpg" />
                         <span><a href="tel:+91{{profile.mobile}}">+91 {{profile.mobile}}</a></span>
@@ -81,10 +111,24 @@
                         <img src="assets/icons/placeholder.jpg" />
                         <span><a href="{{link.links}}" target="_blank">{{link.links}}</a></span>
                     </p>
+                    <p class="contactIconWrap" *ngFor="let link of profile.social_links">
+                        <img src="assets/icons/placeholder.jpg" />
+                        <span><a href="{{link.profile_url}}" target="_blank">{{link.profile_url}}</a></span>
+                    </p>
+
+                    <!-- <div>
+                        <ul class="socialWrap">
+                            <li *ngFor="let link of profile.social_links">
+                                <a href="{{link.profile_url}}" target="_blank">
+                                    <img src="assets/icons/placeholder.jpg" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div> -->
                 </div>
             </div>
-            <div class="contactContainer aboutContainer">
-                <h2>Social</h2>
+            <!-- <div class="contactContainer aboutContainer">
+                <h2 class="GeneralSansReg">Social</h2>
                 <div>
                     <ul class="socialWrap">
                         <li *ngFor="let link of profile.social_links">
@@ -93,6 +137,25 @@
                             </a>
                         </li>
                     </ul>
+                </div>
+            </div> -->
+            <div class="knowledgeContainer aboutContainer" #stickyMenu [class.sticky] = "sticky">
+                <h2 class="GeneralSansReg" (click)="toggleAccorion('knowledge')" >Knowledge
+                    <a href="javascript:void(0)" class="pull-right">
+                        <mat-icon *ngIf="activeAccordions.indexOf('knowledge') < 0">expand_more</mat-icon>
+                        <mat-icon *ngIf="activeAccordions.indexOf('knowledge') > -1">expand_less</mat-icon>
+                    </a>
+                </h2>
+                <div class="myAccordionWrap" [class.open]="activeAccordions.indexOf('knowledge') > -1">
+                    <div class="knowledge-container bottom-bar-padding" infiniteScroll [infiniteScrollDistance]="5"  (scrolled)="getKnowledges()">
+                        <ng-container>
+                            <div style="margin-top: 15px;" infiniteScroll [infiniteScrollDistance]="5"  (scrolled)="getKnowledges()">
+                                <ng-container *ngFor="let knowledge of knowledgeListing; let i = index">
+                                    <app-knowledge-block [knowledge]="knowledge"></app-knowledge-block>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </div>
