@@ -102,3 +102,7 @@ p:not(.small){
     margin-left: -16px;
     margin-right: -16px;
 }
+
+.tabBox a{
+    display: block;
+}
