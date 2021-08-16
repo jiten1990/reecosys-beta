@@ -128,12 +128,16 @@
                                     <div class="swiper-wrapper">
                                         <div class="swiper-slide" *ngFor="let trendingKnowledge of trendingPosts">
                                             <!-- <img [src]="trendingKnowledge.media[0].media_url.replace('upload/', 'upload/w_400/q_auto/')" /> -->
-                                            <a routerLink="knowledge/{{trendingKnowledge.post_id}}">
+                                            <a *ngIf="isApp" matRipple class="GeneralSansReg trendingTitle" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+trendingKnowledge.post_id">
+                                                <img data-src="{{trendingKnowledge.media[0].media_url_thumb}}" data-srcset="{{trendingKnowledge.media[0].media_url.replace('upload/', 'upload/w_640/q_auto/')}}" class="swiper-lazy mainTrendingImage" />
+                                            </a>
+                                            <a *ngIf="!isApp" matRipple class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">
                                                 <img data-src="{{trendingKnowledge.media[0].media_url_thumb}}" data-srcset="{{trendingKnowledge.media[0].media_url.replace('upload/', 'upload/w_640/q_auto/')}}" class="swiper-lazy mainTrendingImage" />
                                             </a>
                                             <div class="trendingContent">
                                                 <p>
-                                                    <a matRipple class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">{{trendingKnowledge.title}}</a>
+                                                    <a *ngIf="isApp" matRipple class="GeneralSansReg trendingTitle" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+trendingKnowledge.post_id">{{trendingKnowledge.title}}</a>
+                                                    <a *ngIf="!isApp" matRipple class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">{{trendingKnowledge.title}}</a>
                                                 </p>
                                                 <p class="small gray">{{trendingKnowledge.location}} <span *ngIf="trendingKnowledge.location != ''"> - </span> {{trendingKnowledge.relative_time}}</p>
                                                 <div class="flexBlock verticalcenter operationIcon">
