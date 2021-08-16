@@ -1,4 +1,4 @@
-.mediaImageWrap{
+.mediaImageWrapContent{
     margin-left: -16px;
     margin-right: -16px;
     border-radius: 0;
@@ -21,7 +21,7 @@
     margin: 10px auto;
 }
 p.small{
-    margin: 0!important;
+    /* margin: 0!important; */
 }
 p:not(.small){
     line-height: 1.6;
@@ -96,4 +96,9 @@ p:not(.small){
 .commentBlock .tabBox.black{
     background-color: #292929;
     color: #fff;
+}
+
+.simiarNews{
+    margin-left: -16px;
+    margin-right: -16px;
 }

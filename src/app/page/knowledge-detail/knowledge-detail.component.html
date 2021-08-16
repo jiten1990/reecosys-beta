@@ -1,5 +1,5 @@
 <div class="app-container">
-    <ng-container *ngIf="knowledge && knowledge.title != ''">
+    <ng-container *ngIf="knowledge && knowledge.title != '' && !isLoading">
         <div style="margin-top: 15px; padding: 0 15px;">
             <h2>{{knowledge.title}}</h2>
             <p class="small gray" style="margin: 5px auto!important">{{knowledge.location}} <span *ngIf="knowledge.location != ''"> <span class="dotSeparator"></span> </span> {{knowledge.relative_time}}</p>
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="mediaImageWrap">
+            <div class="mediaImageWrapContent">
                 <ng-container *ngIf="knowledge.post_type == 'youtube'">
                     <iframe style="width: 100%; height: 320px;" [src]="knowledge.media[0].media_url | safe: 'resourceUrl'" frameborder="0" allowfullscreen></iframe>
                 </ng-container>
@@ -138,6 +138,129 @@
 
                 </div>
 
+            </div>
+
+            <div class="tagDivierWrap">
+                <div class="tagBlockSeparator"></div>
+            </div>
+
+
+            <div class="similarNewsWrap">
+                <h2 class="GeneralSansSemiBold">Similar News</h2>
+                <div class="simiarNews">
+                    <div class="app-container bottom-bar-padding" infiniteScroll [infiniteScrollDistance]="5"  (scrolled)="getKnowledges()">
+                        <ng-container>
+                            <div style="margin-top: 15px;">
+                                <ng-container *ngFor="let similarknowledge of knowledge.posts; let i = index">
+            
+                                    <div>
+                                        <div class="knowledgeBlock" style="padding: 0 15px; padding-bottom: 5px;">  
+            
+                                            <h2 style="margin-top: 15px;" matRipple>
+            
+                                                <ng-container *ngIf="similarknowledge.layout != 'right'">
+            
+                                                    <ng-container *ngIf="isApp">
+                                                        <a class="GeneralSansReg title" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+similarknowledge.post_id" href="javascript:void(0)">{{similarknowledge.title}}</a>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="!isApp">
+                                                        <a class="GeneralSansReg title" routerLink="/knowledge/{{similarknowledge.post_id}}">{{similarknowledge.title}}</a>
+                                                    </ng-container>
+            
+                                                </ng-container>
+                                                <ng-container *ngIf="similarknowledge.layout == 'right'">
+            
+                                                    <div class="flexBlock verticalcenter">
+                                                        <div class="contentPadding">
+                                                            <ng-container *ngIf="isApp">
+                                                                <a class="title GeneralSansReg" onclick="urlSend(this)" [attr.data-url]="'knowledge/'+similarknowledge.post_id" href="javascript:void(0)">{{similarknowledge.title}}</a>
+                                                            </ng-container>
+                                                            <ng-container *ngIf="!isApp">
+                                                                <a class="title GeneralSansReg" routerLink="/knowledge/{{similarknowledge.post_id}}">{{similarknowledge.title}}</a>
+                                                            </ng-container>
+                                                            <p class="small gray">{{similarknowledge.location}} <span *ngIf="similarknowledge.location != ''"> - </span> {{similarknowledge.relative_time}}</p>
+                                                        </div>
+                                                        <ng-container *ngIf="similarknowledge.post_type == 'image'"> 
+            
+                                                            <div *ngIf="similarknowledge.media[0].media_url != ''">
+                                                                <div class="mediaImageWrap smallBlock">
+                                                                <!-- <img [defaultImage]="similarknowledge.media[0].media_url_thumb" [lazyLoad]="similarknowledge.media[0].media_url" class="lazyImage" /> -->
+                                                                    <img [defaultImage]="similarknowledge.media[0].media_url_thumb" [lazyLoad]="similarknowledge.media[0].media_url.replace('w_640', 'w_150')" class="lazyImage" />
+                                                                </div>
+                                                            </div>
+                                
+                                                        </ng-container>
+                                                    </div>
+            
+                                                </ng-container>
+                                            </h2>
+            
+                                            <ng-container *ngIf="similarknowledge.layout != 'right'">
+            
+                                                <p style="margin-bottom: 15px;" class="small gray">{{similarknowledge.location}} <span *ngIf="similarknowledge.location != ''"> <span class="dotSeparator"></span> </span> {{similarknowledge.relative_time}}</p>
+            
+                                                <div class="mediaImageWrap">
+                                                    <ng-container *ngIf="similarknowledge.post_type == 'youtube'">
+                                                        <iframe style="width: 100%; height: 320px;" [src]="similarknowledge.media[0].media_url | safe: 'resourceUrl'" frameborder="0" allowfullscreen></iframe>
+                                                    </ng-container>
+            
+                                                    <ng-container *ngIf="similarknowledge.post_type == 'video'">
+                                                        <plyr style="display: block;" [plyrOptions]="playerOptions" [plyrTitle]="" [plyrPlaysInline]="true" [plyrPoster]="'http:'+similarknowledge.media[0].media_url.replace('mp4', 'jpg')" [plyrSources]="'http:'+similarknowledge.media[0].media_url"></plyr>
+                                                    </ng-container>
+            
+                                                    <ng-container *ngIf="similarknowledge.post_type == 'slider'">
+            
+                                                        <swiper [config]="config">
+                                                            <div class="swiper-wrapper">
+                                                            <div class="swiper-slide" *ngFor="let media of similarknowledge.media">
+                                                                    <img src="http:{{media.media_url}}" class="lazyImage" />
+                                                            </div>
+                                                            </div>
+                                                            <!-- Add Pagination -->
+                                                            <div class="swiper-pagination"></div>
+                                                            <!-- Add Arrows -->
+                                                            <div class="swiper-button-next"></div>
+                                                            <div class="swiper-button-prev"></div>
+                                                        </swiper>
+            
+                                                    </ng-container>
+                                                    
+                                                    <ng-container *ngIf="similarknowledge.post_type == 'image'"> 
+            
+                                                        <div *ngIf="similarknowledge.media[0].media_url != ''">
+                                                            <!-- <img [defaultImage]="similarknowledge.media[0].media_url_thumb" [lazyLoad]="similarknowledge.media[0].media_url" class="lazyImage" /> -->
+                                                            <img [defaultImage]="similarknowledge.media[0].media_url_thumb" [lazyLoad]="similarknowledge.media[0].media_url" class="lazyImage" />
+                                                        </div>
+            
+                                                    </ng-container>
+                                                </div>
+            
+                                            </ng-container>
+                                            
+            
+                                            <div class="flexBlock verticalcenter operationIcon">
+                                                <p class="small black">{{similarknowledge.profile.name}}</p>
+                                                <div class="example-spacer"></div>
+                                                <div matRipple [matRippleCentered]="true" class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
+                                                <div matRipple [matRippleCentered]="true" class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
+                                                <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                                                    <mat-icon>share</mat-icon>
+                                                </button>
+                                                <button mat-icon-button class="example-icon favorite-icon bookmarkIcon" aria-label="Example icon-button with heart icon">
+                                                    <mat-icon>bookmark_border</mat-icon>
+                                                </button> -->
+                                            </div>
+            
+                                            <!-- <hr /> -->
+                                        </div>
+                                        <div class="knowledgeDivider"></div>
+                                    </div>
+            
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
             </div>
         </div>
     </ng-container>

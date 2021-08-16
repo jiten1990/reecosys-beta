@@ -131,7 +131,9 @@ body, html {
 .GeneralSansReg{
     font-family: 'GeneralSans-Regular';
 }
-
+.GeneralSansSemiBold{
+    font-family: 'GeneralSans-Semibold';
+}
 .app-container {
     max-width: 640px;
     margin: 0 auto;

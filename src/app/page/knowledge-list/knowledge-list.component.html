@@ -1,5 +1,5 @@
 <ng-container ng-if="knowledgeListing.length > 0">
-    <div class="animated fadeIn">
+    <div class="">
         <div class="search-container">
             <div class="searchWrap">
                 <div class="iconWrap">
@@ -117,7 +117,7 @@
                             <div class="knowledgeDivider"></div>
                         </div>
 
-                        <ng-container *ngIf="i >= 10 && i < 11">
+                        <ng-container *ngIf="i >= 10 && i < 11 && trendingPosts.length > 0">
 
                             <div class="trendingWrapMain">
                                 <div class="trendingWrap">
@@ -169,7 +169,7 @@
     </div>
     <mat-toolbar class="BottomToolbarNav">
         <span matRipple class="font-12 active">
-            <a href="javaScript:void(0)">
+            <a routerLink="/">
                 <div class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
                 <label>knowledge</label>
             </a>

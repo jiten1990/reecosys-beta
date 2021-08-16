@@ -43,7 +43,7 @@ export class KnowledgeListComponent implements OnInit {
 
       this.route.paramMap.subscribe(params => {
         this.getKnowledges();
-        if(this.route.snapshot.params['tag_id'] == ""){
+        if(!this.route.snapshot.params['tag_id']){
           this.getTrendingPosts();
         }
       })
@@ -62,7 +62,7 @@ export class KnowledgeListComponent implements OnInit {
   };
 
   public configTrending :  SwiperOptions = {
-    slidesPerView: 1.5,
+    slidesPerView: 1.3,
     spaceBetween: 15,
     slidesOffsetBefore: 15,
     slidesOffsetAfter: 15,

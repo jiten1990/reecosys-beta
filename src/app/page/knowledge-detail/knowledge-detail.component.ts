@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { SwiperOptions } from 'swiper';
+import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 
 const knowledgeDetailsKey = makeStateKey('knowledge');
 
@@ -49,15 +50,54 @@ export class KnowledgeDetailComponent implements OnInit {
       this.isApp = true;
     }
 
-
-    this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
+    // this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
     this.route.paramMap.subscribe(params => {
+       this.knowledge = {};
+       window.scrollTo(0, 0);
       // this.knowledge = this.state.get(knowledgeDetailsKey, null as any);
-      if(!this.knowledge){
+      // if(!this.knowledge){
         this.loadKnowledgeDetails();
-      }
+      // }
     })
   } 
+
+  public page = 2;
+  public limit = 15;
+
+  public otherFilterObj = {
+    tag_id : ""
+  };
+
+  public knowledgeListing = [];
+
+  public isLoadingSimilar = false;
+
+  getKnowledges() {
+    if(!this.isLoadingSimilar){
+      this.isLoadingSimilar = true; 
+
+      console.log(this.otherFilterObj, "tags");
+
+      this.knowlegeService.knowledgeListing(this.page, this.limit, this.otherFilterObj).subscribe((response: any) => {
+          if (response.success == 1) {
+
+            if(!this.knowledge.posts){
+              this.knowledge.posts = response.posts;  
+            }
+            else{
+              response.posts.forEach(element => {
+                  this.knowledge.posts.push(element);
+              });
+            }
+            this.page = this.page+1; 
+          }
+          else {
+          }
+          this.isLoadingSimilar = false;
+      });
+    }
+  }
+
 
   readMoreContent(){
       this.isReadMore = true;
@@ -76,6 +116,15 @@ export class KnowledgeDetailComponent implements OnInit {
     this.knowlegeService.knowledgedetails(this.route.snapshot.params['post_id']).subscribe((response: any) => {
         if (response.success == 1) {
           this.knowledge = response.post;
+
+          var tagArray = [];
+          this.knowledge.tags.forEach(tag => {
+              tagArray.push(tag.tag_id);
+          });
+
+          this.otherFilterObj.tag_id = tagArray.join(",");
+
+          this.knowledge.posts = response.posts;
           this.state.set(knowledgeDetailsKey, response.post as any);
           if(!this.isApp){
             this.state.set(knowledgeDetailsKey, null as any);
