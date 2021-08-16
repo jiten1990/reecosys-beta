@@ -12,7 +12,8 @@
         <div class="app-container bottom-bar-padding" infiniteScroll [infiniteScrollDistance]="5"  (scrolled)="getKnowledges()">
             <ng-container>
                 <div style="margin-top: 15px;">
-                    <ng-container *ngFor="let knowledge of knowledgeListing">
+                    <ng-container *ngFor="let knowledge of knowledgeListing; let i = index">
+
                         <div>
                             <div class="knowledgeBlock" style="padding: 0 15px; padding-bottom: 5px;">  
 
@@ -115,6 +116,48 @@
                             </div>
                             <div class="knowledgeDivider"></div>
                         </div>
+
+                        <ng-container *ngIf="i >= 2 && i < 3">
+
+                            <div class="trendingWrapMain">
+                                <div class="trendingWrap">
+                                    <h2>Trending News</h2>
+                                </div>
+
+                                <swiper [config]="configTrending">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide" *ngFor="let trendingKnowledge of trendingPosts">
+                                            <!-- <img [src]="trendingKnowledge.media[0].media_url.replace('upload/', 'upload/w_400/q_auto/')" /> -->
+                                            <a routerLink="knowledge/{{trendingKnowledge.post_id}}">
+                                                <img data-src="{{trendingKnowledge.media[0].media_url_thumb}}" data-srcset="{{trendingKnowledge.media[0].media_url.replace('upload/', 'upload/w_640/q_auto/')}}" class="swiper-lazy mainTrendingImage" />
+                                            </a>
+                                            <div class="trendingContent">
+                                                <p>
+                                                    <a class="GeneralSansReg trendingTitle" routerLink="knowledge/{{trendingKnowledge.post_id}}">{{trendingKnowledge.title}}</a>
+                                                </p>
+                                                <p class="small gray">{{trendingKnowledge.location}} <span *ngIf="trendingKnowledge.location != ''"> - </span> {{trendingKnowledge.relative_time}}</p>
+                                                <div class="flexBlock verticalcenter operationIcon">
+                                                    <p class="small black">{{trendingKnowledge.profile.name}}</p>
+                                                    <div class="example-spacer"></div>
+                                                    <div matRipple [matRippleCentered]="true" class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
+                                                    <div matRipple [matRippleCentered]="true" class="iconMaster"><img src="assets/icons/placeholder.jpg" /></div>
+                                                    <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                                                        <mat-icon>share</mat-icon>
+                                                    </button>
+                                                    <button mat-icon-button class="example-icon favorite-icon bookmarkIcon" aria-label="Example icon-button with heart icon">
+                                                        <mat-icon>bookmark_border</mat-icon>
+                                                    </button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </swiper>
+                                <div class="trendingWrap">
+                                    <span class="trendingDivider"></span>
+                                </div>
+                            </div>
+                        </ng-container>
+
                     </ng-container>
                 </div>
             </ng-container>

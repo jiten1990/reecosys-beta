@@ -11,7 +11,9 @@
                     </div>
                     <div class="profileInfo">
                         <h2>{{knowledge.profile.name}}</h2>
-                        <p class="small gray">{{knowledge.profile.designations[0].designation}} at {{knowledge.profile.designations[0].company_name}}</p>
+                        <ng-container *ngIf="knowledge.profile.designations.length > 0">
+                            <p class="small gray">{{knowledge.profile.designations[0].designation}} at {{knowledge.profile.designations[0].company_name}}</p>
+                        </ng-container>
                     </div>
                     <span class="example-spacer"></span>
                     <div class="followButton">
@@ -34,7 +36,7 @@
                     <swiper [config]="config">
                         <div class="swiper-wrapper">
                         <div class="swiper-slide" *ngFor="let media of knowledge.media">
-                                <img src="http:{{media.media_url}}" class="lazyImage" />
+                                <img [defaultImage]="knowledge.media[0].media_url_thumb" [lazyLoad]="knowledge.media[0].media_url" class="lazyImage" />
                         </div>
                         </div>
                         <!-- Add Pagination -->
@@ -57,7 +59,7 @@
             </div>
 
 
-            <div class="animated fadeIn" *ngIf="knowledge.blocks.length > 0">
+            <div *ngIf="knowledge.blocks.length > 0">
 
                 <div class="contentWrapper">
 
@@ -96,21 +98,23 @@
                     <div class="tagWrapper">
                         <ng-container *ngFor="let tag of knowledge.tags">
                             <ng-container *ngIf="tag.tag != ''">
-                                <div matRipple class="tabBox">
-                                    <h2>More on {{tag.tag}}</h2>
+                                <div matRipple class="tabBox grayBg">
+                                    <h2>{{tag.tag}}</h2>
                                 </div>
                             </ng-container>
                         </ng-container>
                         <ng-container *ngFor="let user of knowledge.users">
                             <ng-container *ngIf="user.name != ''">
-                                <div matRipple class="tabBox">
+                                <div matRipple class="tabBox grayBg">
                                     <div class="flexBlock verticalcenter">
                                         <div class="profilePic">
                                             <img src="{{user.profile_picture}}" />
                                         </div>
                                         <div class="profileInfo">
                                             <h2>{{user.name}}</h2>
-                                            <p class="small gray">{{user.designations[0].designation}} at {{knowledge.profile.designations[0].company_name}}</p>
+                                            <ng-container *ngIf="user.designations.length > 0">
+                                                <p class="small gray">{{user.designations[0].designation}} at {{knowledge.profile.designations[0].company_name}}</p>
+                                            </ng-container>
                                         </div>
                                     </div>
                                 </div>

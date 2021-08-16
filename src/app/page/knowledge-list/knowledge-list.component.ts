@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { KnowledgeService } from 'src/app/_services/knowledge.service';
 import { TransferState, makeStateKey } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { SwiperOptions } from 'swiper';
+import Swiper, { SwiperOptions } from 'swiper';
 import { Angular2UsefulSwiperModule } from 'angular2-useful-swiper';
 // import { NgxResponsiveEmbedComponent } from 'ngx-responsive-embed';
 
 const knowledgeKey = makeStateKey('knowledgeListing');
+const trendingKey = makeStateKey('knowledgeListing');
 
 @Component({
   selector: 'app-knowledge-list',
@@ -30,9 +31,15 @@ export class KnowledgeListComponent implements OnInit {
       this.isApp = true;
     }
 
+    this.trendingPosts = this.state.get(trendingKey, null as any);
+
     this.knowledgeListing = this.state.get(knowledgeKey, null as any);
+
     if(!this.knowledgeListing){
       this.getKnowledges();
+    }
+    if(!this.trendingPosts){
+      this.getTrendingPosts();
     }
 
   }
@@ -45,6 +52,14 @@ export class KnowledgeListComponent implements OnInit {
       prevEl: '.swiper-button-prev'
     },
     spaceBetween: 30
+  };
+
+  public configTrending :  SwiperOptions = {
+    slidesPerView: 1.5,
+    spaceBetween: 15,
+    slidesOffsetBefore: 15,
+    preloadImages: false,
+    lazy: true
   };
 
   public playerOptions = {
@@ -87,6 +102,27 @@ export class KnowledgeListComponent implements OnInit {
           else {
           }
           this.isLoading = false;
+      });
+    }
+  }
+
+
+  public isLoadingTrending = false;
+
+  public trendingPosts = [];
+
+  getTrendingPosts() {
+
+    // this.categoryObj = {};
+
+    if(!this.isLoadingTrending){
+      this.isLoadingTrending = true;
+      this.knowlegeService.trendingListing().subscribe((response: any) => {
+          if (response.success == 1) {
+              this.trendingPosts = response.posts;
+              this.state.set(trendingKey, response.posts as any);
+          }
+          this.isLoadingTrending = false;
       });
     }
   }

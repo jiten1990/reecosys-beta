@@ -26,6 +26,16 @@ export class KnowledgeService {
     return this.http.post(url, body, { headers: httpHeaders });
   }
 
+  trendingListing() {
+    const url = environment.apiUrl + 'services/trendingPosts';
+    let body = new HttpParams();
+    body = body.append('maxWidth', '640');
+    let httpHeaders = new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    return this.http.post(url, body, { headers: httpHeaders });
+  }
+
   knowledgedetails(post_id){
     const url = environment.apiUrl + 'services/post_data';
     let body = new HttpParams();
